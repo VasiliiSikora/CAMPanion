@@ -1,0 +1,31 @@
+{
+  "name": "campanion",
+  "version": "1.0.0",
+  "description": "Project 3 - General Assembly - Single Page App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/nodemon/bin/nodemon.js server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VasiliiSikora/CAMPanion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VasiliiSikora/CAMPanion/issues"
+  },
+  "homepage": "https://github.com/VasiliiSikora/CAMPanion#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "connect-pg-simple": "^7.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
