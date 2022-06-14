@@ -45,10 +45,7 @@ function renderHeader() {
     loginButton.addEventListener('click', renderLogin)
     headerContainer.appendChild(loginButton);
 
-    
-    
-
-
-
+    // Check for loggedin user
+    getUser()
 
 }
