@@ -6,6 +6,29 @@ Hover adds backdrop shadow
 Border Radius!
 */
 
+body {
+    font-family: sans-serif;
+}
+
+#header {
+    display: flex;
+    width: 100%;
+}
+
+.nav-button {
+    display: inline-block;
+    all: unset;
+    padding: 10px;
+    border-radius: 12px;
+    font-family: sans-serif;
+}
+
+.nav-button:hover {
+    background-color: #597059; 
+    color: white;
+  }
+
+
 /* The Modal (background) */
 .modal {
     position: fixed; /* Stay in place */
@@ -31,3 +54,4 @@ Border Radius!
     flex-direction: column;
   }
   
+
