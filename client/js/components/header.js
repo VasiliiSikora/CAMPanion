@@ -34,6 +34,7 @@ function renderHeader() {
     signupButton.setAttribute('class', 'nav-button');
     signupButton.setAttribute('id', 'signUpButton');
     signupButton.textContent = "Sign Up";
+    signupButton.addEventListener('click', renderSignUp)
     headerContainer.appendChild(signupButton);
 
     const loginButton = document.createElement("button");

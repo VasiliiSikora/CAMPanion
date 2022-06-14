@@ -11,8 +11,8 @@ CREATE TABLE users (
     name TEXT,
     email TEXT,
     password_hash TEXT,
-    postcode NUMBER,
-    admin BOOLEAN
+    postcode INTEGER,
+    admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE campsites (
@@ -26,15 +26,15 @@ CREATE TABLE campsites (
 CREATE TABLE types (
     FOREIGN KEY(campsiteId) 
         REFERENCES capsites(campsiteId),
-    glamping BOOLEAN,
-    beachside BOOLEAN,
+    glamping BOOLEAN DEFAULT FALSE,
+    beachside BOOLEAN DEFAULT FALSE,
 );
 
 CREATE TABLE amenities (
     FOREIGN KEY(campsiteId) 
         REFERENCES capsites(campsiteId),
-    shower BOOLEAN,
-    toilet BOOLEAN,
+    shower BOOLEAN DEFAULT FALSE,
+    toilet BOOLEAN DEFAULT FALSE,
 );
 
 CREATE TABLE reviews (
@@ -44,6 +44,6 @@ CREATE TABLE reviews (
     FOREIGN KEY(campsiteId) 
         REFERENCES capsites(campsiteId),
     description TEXT,
-    rating NUMBER,
+    rating INTEGER,
     date DATE
 );

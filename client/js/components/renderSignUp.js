@@ -4,27 +4,21 @@ function renderSignUp() {
     // Get body to append to
         const docBody = document.body
 
-    //get sign-up button
-        const signUpButton = document.getElementById('signUpButton')
-    // When the user clicks on the button, open the modal
-        signUpButton.onclick = function() {
-            signUpModal.style.display = 'block';
-        }
-
-    // Create the modal HTML
+    // Create the modal HTML and display as block
         const signUpModal = document.createElement('div')
         signUpModal.className = 'modal'
         signUpModal.setAttribute('id', 'signUpModal')
+        signUpModal.style.display = 'block';
 
     //Create Modal Content
         const signUpModalContent = document.createElement('div')
-        signUpModal.className = 'modalContent'
+        signUpModalContent.className = 'modalContent'
     // Signup Form
         const form = document.createElement('form')
         const logo = document.createElement('img')
         logo.src = '../../static/logo.jpeg' // link to logo image in statics
         form.innerHTML = `
-        <input type="text" name="name" placeholder="name"><br>
+        <input type="text" name="name" placeholder="Name"><br>
         <input type="text" name="email" placeholder="Email Address"><br>
         <input type="text" name="password" placeholder="Password"><br>
         <input type="text" name="postcode" placeholder="Postcode"><br>
@@ -37,14 +31,15 @@ function renderSignUp() {
             const data = {
                 name: formData.get("name"),
                 email: formData.get("email"),
-                password: formData.get("password"),
+                password_hash: formData.get("password"),
                 postcode: formData.get("postcode")
             }
     
             axios.post('/api/users', data)
                 .then(response => {
                     console.log(response)
-                    signUpModal.style.display = "none"; //close the modal
+                    // signUpModal.style.display = "none"; //close the modal
+                    signUpModal.remove()
                 }).catch((err) => {
                     console.log(err)
                     console.log(err.response)
@@ -60,8 +55,9 @@ function renderSignUp() {
 
     // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-            if (event.target == modal) {
-                signUpModal.style.display = "none";
+            if (event.target == signUpModal) {
+                // signUpModal.style.display = "none";
+                signUpModal.remove()
             }
         }
 
