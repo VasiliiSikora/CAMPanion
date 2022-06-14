@@ -6,6 +6,7 @@ const db = require('./database/db')
 
 // require controllers HERE
 const usersController = require('./controllers/users') 
+const sessionController = require('./controllers/session') 
 
 const app = express()
 const port = 3001;
@@ -31,6 +32,7 @@ app.use(express.json())
 
 // Add app.use for other controllers here
 app.use('/api/users', usersController);
+app.use('/api/session', sessionController);
 
 // start the web server
 app.listen(port, () => {

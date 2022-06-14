@@ -1,5 +1,6 @@
 function renderHeader() {
     const headerContainer = document.getElementById("header");
+    headerContainer.innerHTML=""
     
     const heading = document.createElement("h1");
     heading.setAttribute('id', 'heading');
@@ -41,6 +42,7 @@ function renderHeader() {
     loginButton.setAttribute('class', 'nav-button');
     loginButton.setAttribute('id', 'logInButton');
     loginButton.textContent = "Log In";
+    loginButton.addEventListener('click', renderLogin)
     headerContainer.appendChild(loginButton);
 
     
