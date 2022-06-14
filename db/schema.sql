@@ -17,6 +17,7 @@ CREATE TABLE users (
 
 CREATE TABLE campsites (
     campsiteId SERIAL PRIMARY KEY,
+    title VARCHAR(50)
     street VARCHAR(100),
     state VARCHAR(3),
     -- dont need foreign key for users since use cookies
