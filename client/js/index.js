@@ -2,3 +2,4 @@
 // This is also called initialise.js
 
 // Call functions that are created in components files
+renderHeader();

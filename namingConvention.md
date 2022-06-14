@@ -2,6 +2,16 @@
 
 
 ## Existing id's & classes
+- ID: 'heading' (used for main heading)
+- IDs for nav bar buttons: 
+    - homeButton
+    - aboutButton
+    - reviewButton
+    - addSiteButton
+    - signUpButton
+    - logInButton
+    
+- Class: 'nav-button' (used for the buttons (Home, Add Site, Add Review) in the nav bar)
 
 
 ## BoilerPlate CSS
