@@ -34,13 +34,10 @@ router.post('/', (req,res) => {
                 } else {
                     res.status(400).json({success: false, message: 'login failed, email or username doesnt match'})
                 }
-
             } else {
                 res.status(400).json({success: false, message: 'login failed, user doesnt exist'})
             }
-       
     })
-
 })
 
 // Used for getting a logged in user when page is loaded
@@ -48,7 +45,7 @@ router.get('/', (req,res) => {
     const userId = req.session.userId
     const name = req.session.name
     const email = req.session.email
-
+    console.log(email, 'this is a logged in user')
     res.json({
         'userId': userId,
         'name': name,
@@ -57,6 +54,7 @@ router.get('/', (req,res) => {
 
 })
 
+// Delete cookies (for logout)
 router.delete('/', (req,res) => {
     req.session.destroy()
     res.json({success: true})
