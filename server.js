@@ -5,6 +5,7 @@ const pgSession = require('connect-pg-simple')(expressSession);
 const db = require('./database/db')
 
 // require controllers HERE
+const usersController = require('./controllers/users') 
 
 const app = express()
 const port = 3001;
@@ -29,6 +30,7 @@ app.use(express.static('client'))
 app.use(express.json())
 
 // Add app.use for other controllers here
+app.use('/api/users', usersController);
 
 // start the web server
 app.listen(port, () => {
