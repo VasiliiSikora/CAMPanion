@@ -3,6 +3,7 @@ const mainContainer = document.getElementById('main-container')
 
 // need central clearChildren or alternate
 function clearChildren() {
+    const mainContainer = document.getElementById('main-container')
     mainContainer.innerHTML = ""
 }
 
@@ -12,7 +13,7 @@ function createAndAppend(childType, appendTo) {
 }
 
 function renderSingleCampsite(campId) {
-    console.log("function has been called")
+    const mainContainer = document.getElementById('main-container')
     // create divs and set classes, append to main page before calls begin/come in staggered
     clearChildren()
     // others will have to clear this attribute when they render new 'pages' - this sets the css grid
@@ -41,26 +42,20 @@ function renderSingleCampsite(campId) {
     .then(res => {
         // whilst calling, show something nice - a camp themed loading message
         // if no results - show an error message
-        console.log("checking progress in axios campsite function - inside .then")
         const campsiteResult = res.data
-        console.log(campsiteResult)
-        
-        //don't have a camp title right now.
-    
-        
         const campTitle = document.createElement('h1')
-        campTitle.innerHTML = campId
+        campTitle.innerHTML = campsiteResult[0]['title']
         singleCampsiteHeading.appendChild(campTitle)
         const campAddress = document.createElement('h2')
-        // will the comma work to string them together?
-        campAddress.innerHTML = campsiteResult[0]['street'].concat(campsiteResult[0]['state'])
+        campAddress.innerHTML = campsiteResult[0]['street'].concat(", ").concat(campsiteResult[0]['state'])
         singleCampsiteHeading.appendChild(campAddress)
 
-        // doing something wrong
+        // uncomment when image working
         const campImg = document.createElement('img')
+        campImg.classList.add('individual-result-pic')
         dbImgSrc = campsiteResult[0]['img']
         campImg.src = dbImgSrc
-        console.log('img src is: ' + img)
+        console.log('img src is: ' + dbImgSrc)
         singleCampsiteImage.appendChild(campImg)
     })
     .catch((error) => {
@@ -72,9 +67,7 @@ function renderSingleCampsite(campId) {
     axios
     .get(`/api/types/${campId}`)
     .then(res => {
-        console.log('types axios call returned')
         const typesResults = res.data
-        console.log(typesResults)
         const typesTitle = document.createElement('h3')
         typesTitle.innerHTML = "campsite type"
         singleCampsiteTypes.appendChild(typesTitle)
@@ -84,27 +77,21 @@ function renderSingleCampsite(campId) {
         // check what the sql results look like
         // need to grab each one that is a TRUE - either in the server side or here?
         // loop through results and create an LI each time?
-        console.log("testing access to keys")
-        const typeKeys = Object.keys(typesResults[0])
-        console.log(typeKeys)
-        for (let key of typeKeys) {
-            console.log("This key is: " + key)
-        }
-        for(let i = 0; i < typesResults.length; i++) {
-            console.log("typoes result length = " + typesResults.length)
-            let typesLi = document.createElement('li')
-            typesLi.innerHTML = typesResults[0]['glamping']
-            console.log("type li")
-            console.log(typesResults[0])
-            typesUl.appendChild(typesLi)
+        // const typeKeys = Object.keys(typesResults[0])
+        for (type in typesResults[0]) {
+            if((type != 'campsiteid') && typesResults[0][type]) {
+                console.log("type: " + type)
+                let typesLi = document.createElement('li')
+                typesLi.innerHTML = type
+                typesUl.appendChild(typesLi)
+            }
         }
     })
-
     .catch((error) => {
         console.log("types call doesn't work")
     })
     // another get for amenities - as above
-
+    
     axios
     .get(`/api/amenities/${campId}`)
     .then(res => {
@@ -115,13 +102,12 @@ function renderSingleCampsite(campId) {
         const amenitiesUl = document.createElement('ul')
         amenitiesUl.classList.add('types-amenities-ul')
         singleCampsiteAmenities.appendChild(amenitiesUl)
-        // check what the sql results look like
-        // need to grab each one that is a TRUE - either in the server side or here?
-        // loop through results and create an LI each time?
-        for(let i = 0; i < amenitiesResults.length; i++) {
-            let amenitiesLi = document.createElement('li')
-            amenitiesLi.innerHTML = amenitiesResults[0]['toilet']
-            amenitiesUl.appendChild(amenitiesLi)
+        for (amenity in amenitiesResults[0]) {
+            if((amenity != 'campsiteid') && amenitiesResults[0][amenity]) {
+                let amenitiesLi = document.createElement('li')
+                amenitiesLi.innerHTML = amenity
+                amenitiesUl.appendChild(amenitiesLi)
+            }
         }
     })
     .catch((error) => {
@@ -134,8 +120,6 @@ function renderSingleCampsite(campId) {
     .get(`/api/reviews/${campId}`)
     .then(res => {
         const reviewsResults = res.data
-        console.log("reviewes are ")
-        console.log(reviewsResults)
         const reviewsTitle = document.createElement('h3')
         reviewsTitle.innerHTML = "campsite reviews"
         singleCampsiteReviews.appendChild(reviewsTitle)
