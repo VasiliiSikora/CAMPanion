@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS amenities;
 DROP TABLE IF EXISTS types;
 
 CREATE TABLE users (
-    userId SERIAL PRIMARY KEY,
+    userid SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT,
     password_hash TEXT,
@@ -16,7 +16,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE campsites (
-    campsiteId SERIAL PRIMARY KEY,
+    campsiteid SERIAL PRIMARY KEY,
     title VARCHAR(50),
     street VARCHAR(100),
     state VARCHAR(3),
@@ -26,21 +26,31 @@ CREATE TABLE campsites (
 
 -- These tables used for filtering attributes
 CREATE TABLE types (
-    campsiteId INTEGER REFERENCES campsites(campsiteId) UNIQUE,
+    campsiteid INTEGER REFERENCES campsites(campsiteid) UNIQUE,
     glamping BOOLEAN DEFAULT FALSE,
-    beachside BOOLEAN DEFAULT FALSE
+    tent BOOLEAN DEFAULT FALSE,
+    park BOOLEAN DEFAULT FALSE,
+    caravan BOOLEAN DEFAULT FALSE,
+    cabin BOOLEAN DEFAULT FALSE,
+    farm BOOLEAN DEFAULT FALSE,
+    lake BOOLEAN DEFAULT FALSE,
+    beach BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE amenities (
-    campsiteId INTEGER REFERENCES campsites(campsiteId) UNIQUE,
-    shower BOOLEAN DEFAULT FALSE,
-    toilet BOOLEAN DEFAULT FALSE
+    campsiteid INTEGER REFERENCES campsites(campsiteid) UNIQUE,
+    showers BOOLEAN DEFAULT FALSE,
+    toilets BOOLEAN DEFAULT FALSE,
+    bbq BOOLEAN DEFAULT FALSE,
+    water BOOLEAN DEFAULT FALSE,
+    electricity BOOLEAN DEFAULT FALSE,
+    kayak BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE reviews (
-    reviewId SERIAL PRIMARY KEY,
-    userId INTEGER REFERENCES users(userId),
-    campsiteId INTEGER REFERENCES campsites(campsiteId),
+    reviewid SERIAL PRIMARY KEY,
+    userid INTEGER REFERENCES users(userid),
+    campsiteid INTEGER REFERENCES campsites(campsiteid),
     description TEXT,
     rating INTEGER,
     date DATE

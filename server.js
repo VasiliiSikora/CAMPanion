@@ -6,13 +6,11 @@ const db = require('./database/db')
 
 // require controllers HERE
 const usersController = require('./controllers/users') 
-const sessionController = require('./controllers/session') 
+const sessionController = require('./controllers/session')
+const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim 
 
 const app = express()
 const port = 3001;
-
-// require controllers HERE
-const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim
 
 // Session for Cookies
 app.use(expressSession({
@@ -32,12 +30,12 @@ app.use((req, res, next) => {
 // Tell server where client/statics folders are
 app.use(express.static('client'))
 app.use(express.json())
-app.use('/', singleCampsiteResultController);
 
 
 // Add app.use for other controllers here
 app.use('/api/users', usersController);
 app.use('/api/session', sessionController);
+app.use('/', singleCampsiteResultController);
 
 // start the web server
 app.listen(port, () => {
