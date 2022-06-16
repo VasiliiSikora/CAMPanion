@@ -12,6 +12,19 @@
 classes used for 'single campsite' css:
     'types-amenities-ul' (to display a list/bullets of camp attributes nicely)
     'review-ul' (to format the elements of a review)
+- ID: 'heading' (used for main heading)
+- ID: 'page' (to append content and keep the heading)
+- IDs for nav bar buttons: 
+    - homeButton
+    - aboutButton
+    - reviewButton
+    - addSiteButton
+    - signUpButton
+    - logInButton
+
+- ID: 'addCampForm' (for the add Campsite content)
+    
+- Class: 'nav-button' (used for the buttons (Home, Add Site, Add Review) in the nav bar)
 
 
 ## BoilerPlate CSS
@@ -20,4 +33,3 @@ classes used for 'single campsite' css:
 ## Ideas
 Using first name to greet
 Users location from browser: https://www.w3schools.com/html/html5_geolocation.asp
-Would we like images for our campsite results? Or a random stock photo (could generate from random list like the compliment generator)

@@ -27,15 +27,11 @@ CREATE TABLE campsites (
 -- These tables used for filtering attributes
 CREATE TABLE types (
     campsiteId INTEGER REFERENCES campsites(campsiteId) UNIQUE,
-    -- FOREIGN KEY (campsiteId) 
-    --     REFERENCES campsites(campsiteId),
     glamping BOOLEAN DEFAULT FALSE,
     beachside BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE amenities (
-    -- FOREIGN KEY (campsiteId) 
-    --     REFERENCES campsites(campsiteId),
     campsiteId INTEGER REFERENCES campsites(campsiteId) UNIQUE,
     shower BOOLEAN DEFAULT FALSE,
     toilet BOOLEAN DEFAULT FALSE
@@ -43,10 +39,6 @@ CREATE TABLE amenities (
 
 CREATE TABLE reviews (
     reviewId SERIAL PRIMARY KEY,
-    -- FOREIGN KEY (userId) 
-    --     REFERENCES users(userId),
-    -- FOREIGN KEY (campsiteId) 
-    --     REFERENCES campsites(campsiteId),
     userId INTEGER REFERENCES users(userId),
     campsiteId INTEGER REFERENCES campsites(campsiteId),
     description TEXT,

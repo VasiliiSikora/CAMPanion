@@ -4,7 +4,11 @@ const expressSession = require('express-session')
 const pgSession = require('connect-pg-simple')(expressSession);
 const db = require('./database/db')
 
-const app = express();
+// require controllers HERE
+const usersController = require('./controllers/users') 
+const sessionController = require('./controllers/session') 
+
+const app = express()
 const port = 3001;
 
 // require controllers HERE
@@ -30,6 +34,10 @@ app.use(express.static('client'))
 app.use(express.json())
 app.use('/', singleCampsiteResultController);
 
+
+// Add app.use for other controllers here
+app.use('/api/users', usersController);
+app.use('/api/session', sessionController);
 
 // start the web server
 app.listen(port, () => {
