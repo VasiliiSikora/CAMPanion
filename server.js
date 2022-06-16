@@ -11,6 +11,9 @@ const sessionController = require('./controllers/session')
 const app = express()
 const port = 3001;
 
+// require controllers HERE
+const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim
+
 // Session for Cookies
 app.use(expressSession({
     store: new pgSession({
@@ -29,6 +32,8 @@ app.use((req, res, next) => {
 // Tell server where client/statics folders are
 app.use(express.static('client'))
 app.use(express.json())
+app.use('/', singleCampsiteResultController);
+
 
 // Add app.use for other controllers here
 app.use('/api/users', usersController);
