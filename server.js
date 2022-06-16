@@ -4,10 +4,11 @@ const expressSession = require('express-session')
 const pgSession = require('connect-pg-simple')(expressSession);
 const db = require('./database/db')
 
-// require controllers HERE
-
-const app = express()
+const app = express();
 const port = 3001;
+
+// require controllers HERE
+const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim
 
 // Session for Cookies
 app.use(expressSession({
@@ -27,8 +28,8 @@ app.use((req, res, next) => {
 // Tell server where client/statics folders are
 app.use(express.static('client'))
 app.use(express.json())
+app.use('/', singleCampsiteResultController);
 
-// Add app.use for other controllers here
 
 // start the web server
 app.listen(port, () => {
