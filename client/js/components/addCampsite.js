@@ -1,5 +1,6 @@
 // Amanda add Campsite Page
 function renderAddCampsite() {
+    
     const addCampButton = document.getElementById('addSiteButton');
     addCampButton.addEventListener("click", renderCampForm)
 }

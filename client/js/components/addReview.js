@@ -1,6 +1,6 @@
 function renderAllCampsitesAZ() {
     clearChildren()
-    const mainContainer = document.getElementById('main-container')
+    const mainContainer = document.getElementById('page')
     // list all campsites a-z with summary info and add review button
     axios
     .get(`/api/campsites/`)
@@ -32,8 +32,9 @@ function renderAllCampsitesAZ() {
 }
 
 function addReview(campId) {
+    clearChildren()
     console.log("gonna review this campsite")
-    const mainContainer = document.getElementById('main-container')
+    const mainContainer = document.getElementById('page')
     // need to get ID from button, then CampTitle
     const heading = document.createElement('h2')
     heading.innerHTML = ("leave a review for ")

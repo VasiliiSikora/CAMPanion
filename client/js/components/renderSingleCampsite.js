@@ -1,9 +1,9 @@
-const mainContainer = document.getElementById('main-container')
+const mainContainer = document.getElementById('page')
 // for indidividual results page - main info - camp id/address right now
 
 // need central clearChildren or alternate
 function clearChildren() {
-    const mainContainer = document.getElementById('main-container')
+    const mainContainer = document.getElementById('page')
     mainContainer.innerHTML = ""
 }
 
@@ -13,7 +13,7 @@ function createAndAppend(childType, appendTo) {
 }
 
 function renderSingleCampsite(campId) {
-    const mainContainer = document.getElementById('main-container')
+    const mainContainer = document.getElementById('page')
     // create divs and set classes, append to main page before calls begin/come in staggered
     clearChildren()
     // others will have to clear this attribute when they render new 'pages' - this sets the css grid

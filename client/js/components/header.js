@@ -11,6 +11,7 @@ function renderHeader() {
     homeButton.setAttribute('class', 'nav-button');
     homeButton.setAttribute('id', 'homeButton');
     homeButton.textContent = "Home Page";
+    homeButton.addEventListener('click', renderHomePage)
     headerContainer.appendChild(homeButton);
 
     const aboutButton = document.createElement("button");
@@ -23,6 +24,7 @@ function renderHeader() {
     reviewButton.setAttribute('class', 'nav-button');
     reviewButton.setAttribute('id', 'reviewButton');
     reviewButton.textContent = "Add a Review";
+    reviewButton.addEventListener('click', renderAllCampsitesAZ)
     headerContainer.appendChild(reviewButton);
 
     const addSiteButton = document.createElement("button");
