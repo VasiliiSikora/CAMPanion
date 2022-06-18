@@ -69,8 +69,13 @@ function renderHomePage() {
                 console.log(response.data) // currently pulls all results
                 renderHeader()
 
+                // delete default searches
+                const defaults = document.querySelectorAll('.container')
+                defaults.forEach(element => {
+                    element.remove();
+                })
+
                 // Create search results
-                const searchCont = document.getElementById('searchCont')
                 const results = document.getElementById('resultCont')
 
                 // empty previous search results
@@ -80,21 +85,20 @@ function renderHomePage() {
                 if (response.data.length == 0) {
                     results.innerHTML = `<h2>No Results Found</h2>`
                 } else {
+                    const resultHeader = document.createElement('div');
+                        resultHeader.setAttribute('class', 'resultCont')
 
-                const resultHeader = document.createElement('div');
-                    resultHeader.setAttribute('class', 'resultCont')
+                    const image = document.createElement('h3');
+                        image.innerText = 'Photos'
+                    const title = document.createElement('h3');
+                        title.innerText = 'Description'
+                    const location = document.createElement('h3');
+                        location.innerText = 'Address'
+                    const types = document.createElement('h3');
+                        types.innerText = 'Campsite Type'
 
-                const image = document.createElement('h3');
-                    image.innerText = 'Photos'
-                const title = document.createElement('h3');
-                    title.innerText = 'Description'
-                const location = document.createElement('h3');
-                    location.innerText = 'Address'
-                const types = document.createElement('h3');
-                    types.innerText = 'Campsite Type'
-
-                resultHeader.append(image, title, location, types)
-                results.append(resultHeader)
+                    resultHeader.append(image, title, location, types)
+                    results.append(resultHeader)
 
                 for (result of response.data) { //result is the campsite
                     const resultCont = document.createElement('div');
@@ -135,6 +139,10 @@ function renderHomePage() {
     form.append(searchBar, stateDropDown, searchButton);
     searchContainer.append(form)
     docBody.append(searchContainer, resultsContainer)
+
+    // Default Searches
+    defaultSearches('Beachside Camping', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'VIC')
+    defaultSearches('Farm Camping', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'NSW')
 }
 // Predetermined searchs (image with text below) clicking this will do a get-request search of 
 // that topic in the user's postcode?

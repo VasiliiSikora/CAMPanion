@@ -49,5 +49,5 @@ function renderHeader() {
 
     // Check for loggedin user
     getUser()
-
+    renderAddCampsite()
 }
