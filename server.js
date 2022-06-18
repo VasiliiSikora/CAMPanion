@@ -6,7 +6,8 @@ const db = require('./database/db')
 
 // require controllers HERE
 const usersController = require('./controllers/users') 
-const sessionController = require('./controllers/session') 
+const sessionController = require('./controllers/session')
+const searchController = require('./controllers/search')
 
 const app = express()
 const port = 3001;
@@ -33,11 +34,13 @@ app.use((req, res, next) => {
 app.use(express.static('client'))
 app.use(express.json())
 app.use('/', singleCampsiteResultController);
+// app.use('./client/images', express.static('images'));
 
 
 // Add app.use for other controllers here
 app.use('/api/users', usersController);
 app.use('/api/session', sessionController);
+app.use('/api/campsite', searchController);
 
 // start the web server
 app.listen(port, () => {
