@@ -38,6 +38,12 @@ Border Radius!
     color: rgb(155, 140, 44);
 }
 
+/* for use on search results */
+.multiple-results-summary-box {
+    border: black solid 2px;
+    margin: 10px;
+}
+
 body {
     font-family: sans-serif;
 }

@@ -128,11 +128,11 @@ function renderSingleCampsite(campId) {
             let reviewUl = document.createElement('ul')
             reviewUl.setAttribute('class', 'review-ul')
             let reviewRating = document.createElement('li')
-            reviewRating.innerHTML = reviewsResults[0]['rating']
+            reviewRating.innerHTML = reviewsResults[i]['rating']
             let reviewDesc = document.createElement('li')
-            reviewDesc.innerHTML = reviewsResults[0]['description']
+            reviewDesc.innerHTML = reviewsResults[i]['description']
             let reviewDate = document.createElement('li')
-            reviewDate.innerHTML = reviewsResults[0]['date']
+            reviewDate.innerHTML = reviewsResults[i]['date']
             reviewUl.appendChild(reviewRating)
             reviewUl.appendChild(reviewDate)
             reviewUl.appendChild(reviewDesc)

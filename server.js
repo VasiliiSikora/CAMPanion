@@ -6,12 +6,11 @@ const db = require('./database/db')
 
 // require controllers HERE
 const usersController = require('./controllers/users') 
-
 const sessionController = require('./controllers/session')
+const addReviewController = require('./controllers/addReviewController.js'); // Kim
 const searchController = require('./controllers/search')
 const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim
 const addCampsiteController = require('./controllers/addcampsite')
-
 
 const app = express()
 const port = 3001;
@@ -42,6 +41,7 @@ app.use('/api/session', sessionController);
 app.use('/api/campsite', searchController);
 app.use('/', addCampsiteController);
 app.use('/', singleCampsiteResultController);
+app.use('/', addReviewController);
 
 
 // start the web server
