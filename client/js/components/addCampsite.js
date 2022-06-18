@@ -36,7 +36,7 @@ function renderCampForm() {
         <p><h4>Type of Campsite</h4></p>
         <p><input type="checkbox" id="glamping" name="glamping" value="glamping">
         <label for="glamping"> Glamping</p>
-        <p><input type="checkbox" id="tent" name="tent" value="glamping">
+        <p><input type="checkbox" id="tent" name="tent" value="tent">
         <label for="tent"> Tent Camping</p>
         <p><input type="checkbox" id="park" name="park" value="park">
         <label for="park"> National Park</p>
@@ -94,10 +94,21 @@ function renderCampForm() {
         electricity: formData.get("electricity"),
         kayak: formData.get("kayak"),
     }
+    //checks whether the checkbox is ticked and assigns boolean value accordingly
+    for (item in data) {
+        if (item == 'title' || item == 'address' || item == 'state') {
+            continue
+        }
+        if (data[item] == null) {
+            data[item] = false
+        } else {
+            data[item] = true
+        }
+    }
 
     axios.post('/api/addcampsite', data).then((response) => {
-        // renderHeader()//use for now
         renderHomePage()
+
         }).catch((err) => {
             if (err.response.status == 400) {
                 let errorMessage = document.createElement('h3');
@@ -110,8 +121,8 @@ function renderCampForm() {
             errorMes.textContent = "unknown error occured";
             page.appendChild(errorMes)
             console.log(errorMes)
-        }
+        }console.log(data)  
         })
-    })
+    })  
+    }
 
-}
