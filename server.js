@@ -7,7 +7,8 @@ const db = require('./database/db')
 // require controllers HERE
 const usersController = require('./controllers/users') 
 
-const sessionController = require('./controllers/session') 
+const sessionController = require('./controllers/session')
+const searchController = require('./controllers/search')
 const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim
 const addCampsiteController = require('./controllers/addcampsite')
 
@@ -38,8 +39,10 @@ app.use(express.json())
 // Add app.use for other controllers here
 app.use('/api/users', usersController);
 app.use('/api/session', sessionController);
+app.use('/api/campsite', searchController);
 app.use('/', addCampsiteController);
 app.use('/', singleCampsiteResultController);
+
 
 // start the web server
 app.listen(port, () => {
