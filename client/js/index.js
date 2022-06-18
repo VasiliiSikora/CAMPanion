@@ -4,5 +4,7 @@
 
 // Call functions that are created in components files
 renderHeader();
-// renderAddCampsite();
 renderAllCampsitesAZ();
+renderAddCampsite();
+renderHomePage();
+

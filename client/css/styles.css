@@ -92,5 +92,18 @@ body {
     flex-direction: column;
   }
   
+  .resultImage {
+      height: 150px;
+  }
 
+    
+  .resultCont {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 1fr 1fr;
+    align-items: center;
+}
 
+#resultCont h2 {
+    margin: 0 auto;
+    width: fit-content;
+}
