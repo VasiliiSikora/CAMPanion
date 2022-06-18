@@ -8,6 +8,8 @@ function renderHomePage() {
     // container for search
     const searchContainer = document.createElement('div')
         searchContainer.setAttribute('id', 'searchCont')
+    const resultsContainer = document.createElement('div')
+        resultsContainer.setAttribute('id', 'resultCont')
     const form = document.createElement('form')
 
     const searchBar = document.createElement('input');
@@ -68,10 +70,35 @@ function renderHomePage() {
                 renderHeader()
 
                 // Create search results
-                const container = document.getElementById('searchCont')
+                const searchCont = document.getElementById('searchCont')
+                const results = document.getElementById('resultCont')
+
+                // empty previous search results
+                results.innerHTML = ""
+
+                // check if there are any results
+                if (response.data.length == 0) {
+                    results.innerHTML = `<h2>No Results Found</h2>`
+                } else {
+
+                const resultHeader = document.createElement('div');
+                    resultHeader.setAttribute('class', 'resultCont')
+
+                const image = document.createElement('h3');
+                    image.innerText = 'Photos'
+                const title = document.createElement('h3');
+                    title.innerText = 'Description'
+                const location = document.createElement('h3');
+                    location.innerText = 'Address'
+                const types = document.createElement('h3');
+                    types.innerText = 'Campsite Type'
+
+                resultHeader.append(image, title, location, types)
+                results.append(resultHeader)
 
                 for (result of response.data) { //result is the campsite
                     const resultCont = document.createElement('div');
+                        resultCont.setAttribute('class', 'resultCont')
                     const image = document.createElement('img');
                         image.src = result.img;
                         image.setAttribute('class', 'resultImage')
@@ -90,9 +117,9 @@ function renderHomePage() {
 
                     // put all result elements in a container
                     resultCont.append(image,title,location,types)
-                    container.append(resultCont)
+                    results.append(resultCont)
                 }
-
+            }
             }).catch((err) => {
                 console.log(err)
                 console.log(err.response)
@@ -107,7 +134,7 @@ function renderHomePage() {
 
     form.append(searchBar, stateDropDown, searchButton);
     searchContainer.append(form)
-    docBody.append(searchContainer)
+    docBody.append(searchContainer, resultsContainer)
 }
 // Predetermined searchs (image with text below) clicking this will do a get-request search of 
 // that topic in the user's postcode?
