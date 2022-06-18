@@ -26,6 +26,11 @@ classes used for 'single campsite' css:
     
 - Class: 'nav-button' (used for the buttons (Home, Add Site, Add Review) in the nav bar)
 
+- Div classes used for addcampsite.js form
+    - 'site-address' (for content going into campsites table)
+    - 'campsite-type' (for content going into types table)
+    - 'campsite-amenities' (for content going into campsites table)
+
 
 ## BoilerPlate CSS
 
