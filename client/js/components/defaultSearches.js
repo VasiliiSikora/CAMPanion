@@ -1,4 +1,4 @@
-function defaultSearches(textDescript, imgURL, state) {
+function defaultSearches(textDescript, imgURL, state, glampingBool, tentBool, parkBool, caravanBool, cabinBool, farmBool, lakeBool, beachBool) {
     const docBody = document.getElementById('page')
 
     const container = document.createElement('div')
@@ -12,7 +12,7 @@ function defaultSearches(textDescript, imgURL, state) {
         text.innerText = textDescript
 
     container.addEventListener('click', function (event) {
-        searchQuery(textDescript, state)
+        searchQuery(textDescript, state, glampingBool, tentBool, parkBool, caravanBool, cabinBool, farmBool, lakeBool, beachBool)
     })
 
     container.append(image,text)

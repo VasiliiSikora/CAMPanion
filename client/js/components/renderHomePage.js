@@ -18,7 +18,26 @@ function renderHomePage() {
         searchBar.setAttribute('placeholder', 'Search campsites...')
     
     // Search by type Make this a dropdown
-        // add check boxes
+    const campType = document.createElement('div')
+        campType.setAttribute('id', 'typeSelections')
+        campType.innerHTML = `
+        <p><input type="checkbox" id="glamping" name="glamping" value="glamping">
+        <label for="glamping"> Glamping</p>
+        <p><input type="checkbox" id="tent" name="tent" value="tent">
+        <label for="tent"> Tent Camping</p>
+        <p><input type="checkbox" id="park" name="park" value="park">
+        <label for="park"> National Park</p>
+        <p><input type="checkbox" id="caravan" name="caravan" value="caravan">
+        <label for="caravan"> Caravan Park</p>
+        <p><input type="checkbox" id="cabin" name="cabin" value="cabin">
+        <label for="cabin"> Cabin</p>
+        <p><input type="checkbox" id="farm" name="farm" value="farm">
+        <label for="farm"> Farmland</p>
+        <p><input type="checkbox" id="lake" name="lake" value="lake">
+        <label for="lake"> Lake</p>
+        <p><input type="checkbox" id="beach" name="beach" value="beach">
+        <label for="beach"> Beach</p>
+        `
 
     // Search by state Make this a dropdown
     const stateDropDown = document.createElement('select');
@@ -57,9 +76,30 @@ function renderHomePage() {
         event.preventDefault() //stop it adding get parameters to url
         const formData = new FormData(form) // render form data into object
         console.log(formData)
+
         const data = {
             query: formData.get("search"),
-            state: stateDropDown.value
+            state: stateDropDown.value,
+            glamping: formData.get("glamping"),
+            tent: formData.get("tent"),
+            park: formData.get("park"),
+            caravan: formData.get("caravan"),
+            cabin: formData.get("cabin"),
+            farm: formData.get("farm"),
+            lake: formData.get("lake"),
+            beach: formData.get("beach"),
+        }
+
+        //checks whether the checkbox is ticked and assigns boolean value accordingly
+        for (item in data) {
+            if (item == 'query' || item == 'state') {
+                continue
+            }
+            if (data[item] == null) {
+                data[item] = false
+            } else {
+                data[item] = true
+            }
         }
 
         // Retrieve search results from server
@@ -136,13 +176,13 @@ function renderHomePage() {
             })
     })
 
-    form.append(searchBar, stateDropDown, searchButton);
+    form.append(searchBar, stateDropDown, campType, searchButton);
     searchContainer.append(form)
     docBody.append(searchContainer, resultsContainer)
 
     // Default Searches
-    defaultSearches('Beachside Camping', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'VIC')
-    defaultSearches('Farm Camping', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'NSW')
+    defaultSearches('Beachside Camping', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'VIC', false, false, false, false, false, false, false, true)
+    defaultSearches('Farm Camping', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'NSW', false, false, false, false, false, true, false, false)
 }
 // Predetermined searchs (image with text below) clicking this will do a get-request search of 
 // that topic in the user's postcode?
