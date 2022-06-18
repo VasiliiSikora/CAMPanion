@@ -1,4 +1,6 @@
 // Add default searches
+// This function works to give a default search query. 
+// Preference would be to improve this so you can search for types instead of state
 
 function searchQuery(searchQuery, searchState) {
 
