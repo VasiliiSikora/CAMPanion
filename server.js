@@ -8,6 +8,7 @@ const db = require('./database/db')
 const usersController = require('./controllers/users') 
 const sessionController = require('./controllers/session')
 const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim 
+const addReviewController = require('./controllers/addReviewController.js'); // Kim
 
 const app = express()
 const port = 3001;
@@ -36,6 +37,7 @@ app.use(express.json())
 app.use('/api/users', usersController);
 app.use('/api/session', sessionController);
 app.use('/', singleCampsiteResultController);
+app.use('/', addReviewController);
 
 // start the web server
 app.listen(port, () => {
