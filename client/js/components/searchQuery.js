@@ -2,7 +2,7 @@
 // This function works to give a default search query. 
 // Preference would be to improve this so you can search for types instead of state
 
-function searchQuery(searchQuery, searchState) {
+function searchQuery(searchQuery, searchState, glampingBool, tentBool, parkBool, caravanBool, cabinBool, farmBool, lakeBool, beachBool) {
 
     const docBody = document.getElementById('page');
     docBody.innerHTML = ""
@@ -15,7 +15,15 @@ function searchQuery(searchQuery, searchState) {
    
     const data = {
         query: searchQuery,
-        state: searchState
+        state: searchState,
+        glamping: glampingBool,
+        tent: tentBool,
+        park: parkBool,
+        caravan: caravanBool,
+        cabin: cabinBool,
+        farm: farmBool,
+        lake: lakeBool,
+        beach: beachBool,
     }
 
     axios.post('/api/campsite', data) // get data from campsites database
