@@ -29,11 +29,14 @@ function renderAllCampsitesAZ() {
             newDiv.appendChild(button)
         }
     })
+    .catch((error) => {
+        alert("something went wrong, please try again!");
+        console.log("the error was: " + error)
+    })
 }
 
 function addReview(campId) {
     clearChildren()
-    console.log("gonna review this campsite")
     const mainContainer = document.getElementById('page')
     // need to get ID from button, then CampTitle
     const heading = document.createElement('h2')
@@ -70,6 +73,7 @@ function addReview(campId) {
             renderSingleCampsite(campId)
         })
         .catch((error) => {
+            alert("something went wrong, please try again!");
             console.log("the error was: " + error)
         })
     })
