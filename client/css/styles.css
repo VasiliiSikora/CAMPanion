@@ -122,4 +122,78 @@ body {
     position: relative;
     text-align: center;
     color: white;
+    width: 300px;
+    border-radius: 10px;
+    height: 199px;
   }
+
+/* Modal */
+.modalContent {
+    border-radius: 10px;
+    row-gap: 20px;
+}
+
+.modalContent form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalContent form button {
+    transition: top 0.5s;
+    top: 0px;
+    position: relative;
+}
+
+.modalContent form button:hover {
+    top: -3px;
+}
+
+.container {
+    transition: 0.2s;
+    top: 0px;
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: none;
+}
+
+.container:hover {
+    top: -3px;
+    box-shadow: 5px 5px 10px black;
+}
+
+.container, .container img, .container .centered {
+    border-radius: 10px;
+}
+
+/* Search Bar */
+
+#searchCont {
+    width: 550px;
+    margin: 0 auto;
+}
+
+#searchCont form {
+    display: grid;
+    grid-template-columns: 1fr 15% 20%;
+    column-gap: 5px;
+    width: 100%; 
+}
+
+#typeSelections {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 15px;
+    grid-column: 1 / span 3;
+}
+
+#typeSelections p {
+    margin-bottom: 0px;
+}
+
+#searchCont form input, #searchCont form select, #searchCont form button {
+    border-radius: 15px;
+    padding: 4px;
+}
