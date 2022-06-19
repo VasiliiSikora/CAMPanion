@@ -176,7 +176,7 @@ function renderHomePage() {
             })
     })
 
-    form.append(searchBar, stateDropDown, campType, searchButton);
+    form.append(searchBar, stateDropDown, searchButton, campType);
     searchContainer.append(form)
     docBody.append(searchContainer, resultsContainer)
 
