@@ -1,6 +1,8 @@
 function renderHeader() {
+    const mainContainer = document.getElementById('page')
+    mainContainer.classList.remove('render-single-campsite');
     const headerContainer = document.getElementById("header");
-    headerContainer.innerHTML=""
+    headerContainer.innerHTML = ""
     
     const heading = document.createElement("h1");
     heading.setAttribute('id', 'heading');

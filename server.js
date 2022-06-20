@@ -11,6 +11,7 @@ const addReviewController = require('./controllers/addReviewController.js'); // 
 const searchController = require('./controllers/search')
 const singleCampsiteResultController = require('./controllers/singleCampsiteResultController.js'); // Kim
 const addCampsiteController = require('./controllers/addcampsite')
+const editCampsiteController = require('./controllers/editCampsiteController.js'); // Kim
 
 const app = express()
 const port = 3001;
@@ -42,6 +43,7 @@ app.use('/api/campsite', searchController);
 app.use('/', addCampsiteController);
 app.use('/', singleCampsiteResultController);
 app.use('/', addReviewController);
+app.use('/', editCampsiteController);
 
 
 // start the web server

@@ -125,5 +125,5 @@ function renderCampForm() {
         }console.log(data)  
         })
     })  
-    }
+}
 
