@@ -10,8 +10,11 @@ router.get('/api/campsite/:id', (req, res) => {
     `
     db.query(sql)
         .then((dbResult) => {
-        res.json(dbResult.rows)
-    })
+            res.json(dbResult.rows)
+         })
+         .catch((error) => {
+            res.status(500).json( {message: "unknown error occurred"} )
+        })
 })
 
 // Handle GET requests to /api/types
@@ -23,6 +26,9 @@ router.get('/api/types/:id', (req, res) => {
     db.query(sql)
         .then((dbResult) => {
             res.json(dbResult.rows)
+        })
+        .catch((error) => {
+            res.status(500).json( {message: "unknown error occurred"} )
         })
 })
 
@@ -36,6 +42,9 @@ router.get('/api/amenities/:id', (req, res) => {
         .then((dbResult) => {
             res.json(dbResult.rows)
         })
+        .catch((error) => {
+            res.status(500).json( {message: "unknown error occurred"} )
+        })
 })
 
 // Handle GET requests to /api/reviews
@@ -47,6 +56,9 @@ router.get('/api/reviews/:id', (req, res) => {
     db.query(sql)
         .then((dbResult) => {
             res.json(dbResult.rows)
+        })
+        .catch((error) => {
+            res.status(500).json( {message: "unknown error occurred"} )
         })
 })
 
