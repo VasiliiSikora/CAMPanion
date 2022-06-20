@@ -39,28 +39,53 @@ function renderSingleCampsite(campId) {
     singleCampsiteReviews.setAttribute('id', 'single-campsite-reviews')
     mainContainer.appendChild(singleCampsiteReviews)
 
-
     axios
     .get(`/api/campsite/${campId}`)
     .then(res => {
-        // whilst calling, show something nice - a camp themed loading message
-        // if no results - show an error message
         const campsiteResult = res.data
+        // creates camp title, address, image and appends to top of page
         const campTitle = document.createElement('h1')
         campTitle.innerHTML = campsiteResult[0]['title']
         singleCampsiteHeading.appendChild(campTitle)
+
         const campAddress = document.createElement('h2')
         campAddress.innerHTML = campsiteResult[0]['street'].concat(", ").concat(campsiteResult[0]['state'])
         singleCampsiteHeading.appendChild(campAddress)
+        
+        // create button heading and buttons
+        const buttonHeading = document.createElement('div')
+        buttonHeading.setAttribute('class', 'button-heading')
+        campAddress.appendChild(buttonHeading)
+
+        const editButton = document.createElement('button')
+        editButton.setAttribute('class', 'nav-button');
+        editButton.innerHTML = "something missing? edit this listing"
+        editButton.addEventListener('click', function() {
+            editCampsite(campId)
+        })
+        buttonHeading.appendChild(editButton)
+
+        const reviewButton = document.createElement('button')
+        reviewButton.setAttribute('class', 'nav-button');
+        reviewButton.innerHTML = "been here? leave a review"
+        reviewButton.addEventListener('click', function() {
+            addReview(campId)
+        })
+        buttonHeading.appendChild(reviewButton)
+
+        const deleteButton = document.createElement('button')
+        deleteButton.setAttribute('class', 'nav-button')
+        deleteButton.innerHTML = "admin? delete this listing"
+        buttonHeading.appendChild(deleteButton)
+
         const campImg = document.createElement('img')
         campImg.classList.add('individual-result-pic')
-        dbImgSrc = campsiteResult[0]['img']
-        campImg.src = dbImgSrc
+        campImg.src = campsiteResult[0]['img']
         singleCampsiteImage.appendChild(campImg)
     })
     .catch((error) => {
         const errorMessage = document.createElement('p')
-        errorMessage.innerHTML = error.response.data.message;
+        errorMessage.innerHTML = 'error'
         mainContainer.appendChild(errorMessage)
     })
 
@@ -77,7 +102,6 @@ function renderSingleCampsite(campId) {
         singleCampsiteTypes.appendChild(typesUl)
         for (type in typesResults[0]) {
             if((type != 'campsiteid') && typesResults[0][type]) {
-                console.log("type: " + type)
                 let typesLi = document.createElement('li')
                 typesLi.innerHTML = type
                 typesUl.appendChild(typesLi)
@@ -144,8 +168,8 @@ function renderSingleCampsite(campId) {
             reviewDate.innerHTML = newDate
             // append review elements
             reviewUl.appendChild(reviewRating)
-            reviewUl.appendChild(reviewDate)
             reviewUl.appendChild(reviewDesc)
+            reviewUl.appendChild(reviewDate)
             singleCampsiteReviews.appendChild(reviewUl)
         }
     })
