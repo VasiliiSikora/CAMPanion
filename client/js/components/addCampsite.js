@@ -15,6 +15,33 @@ function renderCampForm() {
     const addform = document.createElement("form");
     addform.setAttribute('id', 'addCampForm');
 
+    const imagediv = document.getElementById("image");
+    imagediv.innerHTML = "";
+    const upload_widget = document.createElement("button");
+    upload_widget.setAttribute('id', 'upload_widget');
+    upload_widget.setAttribute('class', 'cloudinary-button');
+    upload_widget.textContent = "Upload Image";
+    imagediv.replaceChildren(upload_widget);
+    let img_url = "";
+//cloudinary widget
+    let myWidget = cloudinary.createUploadWidget({
+        cloudName: 'campanion', 
+        uploadPreset: 'campanion',
+        sources: ['local', 'url']
+        }, (error, result) => { 
+            if (!error && result && result.event === "success") { 
+            console.log('Done! Here is the image info: ', result.info); 
+            img_url = result.info.secure_url;
+            }
+        }
+        ) 
+
+    document.getElementById("upload_widget").addEventListener("click", function(){
+            myWidget.open();
+        }, false);
+        console.log(img_url)
+        
+//user input form
     addform.innerHTML = `
         <div class="site-address">
         <p><label for="title">Campsite Title:</label>
@@ -65,6 +92,7 @@ function renderCampForm() {
         <label for="electricity"> Electricity</p>
         <p><input type="checkbox" id="kayak" name="kayak" value="kayak">
         <label for="kayak"> Kayak Hire</p></div>
+        
         <div class="submit-btn">
         <button>Submit</button></div>
     `;
@@ -75,7 +103,8 @@ function renderCampForm() {
         event.preventDefault()
 
     const formData = new FormData(addform)
-
+    formData.append(upload_widget, img_url);
+        console.log(img_url)
     const data = {
         title: formData.get("title"),
         address: formData.get("address"),
@@ -94,10 +123,11 @@ function renderCampForm() {
         water: formData.get("water"),
         electricity: formData.get("electricity"),
         kayak: formData.get("kayak"),
+        image: img_url     
     }
     //checks whether the checkbox is ticked and assigns boolean value accordingly
     for (item in data) {
-        if (item == 'title' || item == 'address' || item == 'state') {
+        if (item == 'title' || item == 'address' || item == 'state' || item == "image") {
             continue
         }
         if (data[item] == null) {
