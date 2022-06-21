@@ -4,6 +4,7 @@
 function renderHomePage() {
     const docBody = document.getElementById('page');
     docBody.innerHTML = ""
+    docBody.classList.remove('render-single-campsite');
 
     // container for search
     const searchContainer = document.createElement('div')
@@ -75,7 +76,7 @@ function renderHomePage() {
     form.addEventListener('submit', event => {
         event.preventDefault() //stop it adding get parameters to url
         const formData = new FormData(form) // render form data into object
-        console.log(formData)
+        // console.log(formData)
 
         const data = {
             query: formData.get("search"),
@@ -106,7 +107,7 @@ function renderHomePage() {
         // Improvement is to use parameters such as state to narrow down the get request (pull only results that have that attribute)
         axios.post('/api/campsite', data) // get data from campsites database
             .then(response => {
-                console.log(response.data) // currently pulls all results
+                // console.log(response.data) // currently pulls all results
                 renderHeader()
 
                 // delete default searches
@@ -141,8 +142,12 @@ function renderHomePage() {
                     results.append(resultHeader)
 
                 for (result of response.data) { //result is the campsite
+                    console.log('render homepage - campsiteid is: ' + result.campsiteid)
                     const resultCont = document.createElement('div');
                         resultCont.setAttribute('class', 'resultCont')
+                        resultCont.addEventListener('click', function() {
+                            renderSingleCampsite(result.campsiteid);
+                        })
                     const image = document.createElement('img');
                         image.src = result.img;
                         image.setAttribute('class', 'resultImage')

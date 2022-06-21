@@ -55,6 +55,7 @@ function searchQuery(searchQuery, searchState, glampingBool, tentBool, parkBool,
             results.append(resultHeader)
 
         for (result of response.data) { //result is the campsite
+            console.log('id is: ' + result)
             const resultCont = document.createElement('div');
                 resultCont.setAttribute('class', 'resultCont')
             const image = document.createElement('img');
