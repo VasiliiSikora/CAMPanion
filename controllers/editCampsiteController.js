@@ -38,6 +38,43 @@ router.put('/api/editCampsite', (req, res) => {
         })
 })
 
-
+// deletes a campsite based on ID
+router.delete('/api/deleteCampsite/:id', (req, res) => {
+    let id = req.params.id;
+    console.log("the id is " + id)
+    let sqlTypes = `
+    DELETE FROM types WHERE campsiteid = ($1)
+    `
+    db.query(sqlTypes, [id])
+        .then(dbResult => {
+            console.log('types is done')
+            let sqlAmenities = `
+            DELETE FROM amenities WHERE campsiteid = ($1)
+            `
+            db.query(sqlAmenities, [id])
+                .then(dbResult => {
+                    console.log('amenities is done')
+                    let sqlReviews = `
+                    DELETE FROM reviews WHERE campsiteid = ($1)
+                    `
+                    db.query(sqlReviews, [id])    
+                        .then(dbResult => {
+                            console.log('reviews is done')
+                            let sql = `
+                            DELETE FROM campsites WHERE campsiteid = ($1)
+                            `
+                            db.query(sql, [id])
+                                .then(dbResult => {
+                                    console.log(id + " has been deleted from campsites")
+                                    res.json(dbResult.rows)
+                                })
+                                .catch(reason => {
+                                    console.log("something went wrong when deleting a campsite " + reason)
+                                    res.status(500).json("unknown error occurred")
+                                })
+                        })
+                })
+        })
+})
 
 module.exports = router

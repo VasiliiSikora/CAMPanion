@@ -138,3 +138,42 @@ function editCampsite(campId) {
         console.log("error")
     })
 }
+
+function deleteCampsiteRequest(campId) {
+    const mainContainer = document.getElementById('page')
+    mainContainer.classList.remove('render-single-campsite');
+    clearChildren()
+    let confirmDelete = document.createElement('p')
+    confirmDelete.innerHTML = 'are you sure you want to delete this campsite?'
+    mainContainer.appendChild(confirmDelete)
+
+    const confirmDeleteButton = document.createElement('button')
+    confirmDeleteButton.setAttribute('class', 'yes-button')
+    confirmDeleteButton.innerHTML = "yes"
+    confirmDeleteButton.addEventListener('click', function() {
+        deleteCampsiteConfirm(campId)
+    })
+    mainContainer.appendChild(confirmDeleteButton)
+}
+
+function deleteCampsiteConfirm(campId) {
+    console.log('will delete!')
+    axios
+    .delete(`/api/deleteCampsite/${campId}`)
+    .then((response) => {
+        renderAllCampsitesAZ()
+    })
+    .catch((err) => {
+        if (err.response.status == 400) {
+            let errorMessage = document.createElement('h3');
+            errorMessage.textContent = err.response.data.message;
+            page.appendChild(errorMessage)
+            console.log(errorMessage)
+        } else { 
+            let errorMes = document.createElement('h3');
+            errorMes.textContent = "unknown error occured";
+            page.appendChild(errorMes)
+            console.log(errorMes)
+        }
+    })
+}

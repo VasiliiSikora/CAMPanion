@@ -89,6 +89,11 @@ body {
     list-style: none;
 }
 
+.yes-button:hover {
+    background-color: var(--other); 
+    color: white;
+}
+
 /* for use on search results */
 .multiple-results-summary-box {
     border: black solid 2px;
