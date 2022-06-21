@@ -20,7 +20,8 @@ CREATE TABLE campsites (
     title VARCHAR(50),
     street VARCHAR(100),
     state VARCHAR(3),
-    img TEXT
+    img TEXT,
+    mapimg TEXT
     -- dont need foreign key for users since use cookies
 );
 
