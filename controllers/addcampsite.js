@@ -7,8 +7,8 @@ const { default: axios } = require('axios');
 
 
 router.post('/api/addcampsite', (req, res) => {
-    let {title, address, state, glamping, tent, park, caravan, cabin, farm, lake, beach, showers, toilets, bbq, water, electricity, kayak} = req.body;
-    
+    let {title, address, state, glamping, tent, park, caravan, cabin, farm, lake, beach, showers, toilets, bbq, water, electricity, kayak, image} = req.body;
+
     //check whether the mandatory values for the campsite table are provided
     if  (!title) {
         res.status(400).json({ message: 'You did not submit a title!'})
@@ -22,15 +22,16 @@ router.post('/api/addcampsite', (req, res) => {
      }    
      //add the input values into the tables
      else {
+
         let newAddress = address.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
 
         const mapURLPromise = maps.staticMapGet(newAddress.replace(" ","%20") + "%20" + state + "%20" + 'Australia')
         console.log(mapURLPromise, 'Promise')
 
         mapURLPromise.then((mapURL) => {
-            const sql = `INSERT INTO campsites(title, street, state, mapimg) VALUES ($1, $2, $3, $4) RETURNING campsiteid`
+            const sql = `INSERT INTO campsites(title, street, state, img, mapimg) VALUES ($1, $2, $3, $4, $5) RETURNING campsiteid`
             console.log(mapURL, 'first')
-            db.query(sql, [title, address, state, mapURL]).then((dbResult) => {
+            db.query(sql, [title, address, state, image, mapURL]).then((dbResult) => {
                 console.log(dbResult)
                 const campid = dbResult.rows[0][`campsiteid`]
                 console.log('second')

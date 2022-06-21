@@ -1,7 +1,7 @@
 // Will check for logged in user
 
 async function getUser() { // make function asynchronous
-    URL = 'http://localhost:3001/api/session'
+    const URL = 'http://localhost:3001/api/session'
     const results = await axios.get(URL).then(response => { //set await so that when the function is called it knows that a promise is coming
     console.log(response.data)
     if (response.data.name) { //checks if user is logged in as there are still "sessions" albeit with null info in them when you log out
