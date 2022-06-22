@@ -76,6 +76,9 @@ function renderSingleCampsite(campId) {
         const deleteButton = document.createElement('button')
         deleteButton.setAttribute('class', 'nav-button')
         deleteButton.innerHTML = "admin? delete this listing"
+        deleteButton.addEventListener('click', function() {
+            deleteCampsiteRequest(campId)
+        })
         buttonHeading.appendChild(deleteButton)
 
         const campImg = document.createElement('img')
