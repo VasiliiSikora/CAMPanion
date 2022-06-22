@@ -142,7 +142,7 @@ function renderHomePage() {
                     results.append(resultHeader)
 
                 for (result of response.data) { //result is the campsite
-                    console.log('render homepage - campsiteid is: ' + result.campsiteid)
+                    // console.log('render homepage - campsiteid is: ' + result.campsiteid)
                     const resultCont = document.createElement('div');
                         resultCont.setAttribute('class', 'resultCont')
                         resultCont.addEventListener('click', function() {
@@ -157,7 +157,7 @@ function renderHomePage() {
                         location.innerText = result.street + " " + result.state
                     const types = document.createElement('p');
                         for (type in result) {
-                            console.log(type)
+                            // console.log(type)
                             if (result[type] == true && type != 'campsiteid') {
                                 types.innerText += type + " ";
                             }

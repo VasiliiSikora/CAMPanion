@@ -19,7 +19,7 @@ function renderLogin() {
         logo.src = '../../static/logo.jpeg' // link to logo image in statics
         form.innerHTML = `
         <input type="text" name="email" placeholder="Email Address"><br>
-        <input type="text" name="password" placeholder="Password"><br>
+        <input type="password" name="password" placeholder="Password"><br>
         <button>Login</button>
         `
         form.addEventListener('submit', event => {

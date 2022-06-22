@@ -6,4 +6,4 @@
 renderHeader();
 renderHomePage();
 
-locationGet('Gatehouse Drive Kensington VIC')
+// locationGet('Gatehouse Drive Kensington VIC')
