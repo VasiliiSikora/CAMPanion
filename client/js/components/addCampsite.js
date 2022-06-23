@@ -9,20 +9,25 @@ function renderCampForm() {
     //to append to body
     const page = document.getElementById("page");
     page.innerHTML="";
-    //create page content
+    //create heading and page content
+    // const headingdiv = document.getElementById("title")
     const heading = document.createElement('h2');
     heading.textContent = "Add a New Campsite";
+    // headingdiv.innerHTML = "";
+    // headingdiv.replaceChildren(heading);
+
     const addform = document.createElement("form");
     addform.setAttribute('id', 'addCampForm');
 
-    const imagediv = document.getElementById("image");
-    imagediv.innerHTML = "";
+    // const imagediv = document.getElementById("image");
+    // imagediv.innerHTML = "";
     const upload_widget = document.createElement("button");
     upload_widget.setAttribute('id', 'upload_widget');
     upload_widget.setAttribute('class', 'cloudinary-button');
-    upload_widget.textContent = "Upload Image";
-    imagediv.replaceChildren(upload_widget);
+    upload_widget.textContent = "Upload Campsite Photo";
+    page.replaceChildren(heading, upload_widget);
     let img_url = "";
+
 //cloudinary widget
     let myWidget = cloudinary.createUploadWidget({
         cloudName: 'campanion', 
@@ -97,7 +102,7 @@ function renderCampForm() {
         <button>Submit</button></div>
     `;
 
-    page.replaceChildren(heading, addform);
+    page.replaceChildren(heading, upload_widget, addform);
 
     addform.addEventListener('submit', event => {
         event.preventDefault()
@@ -127,7 +132,7 @@ function renderCampForm() {
     }
     //checks whether the checkbox is ticked and assigns boolean value accordingly
     for (item in data) {
-        if (item == 'title' || item == 'address' || item == 'state' || item == "image") {
+        if (item == 'title' || item == 'address' || item == 'state' || item == 'image') {
             continue
         }
         if (data[item] == null) {

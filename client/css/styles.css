@@ -229,3 +229,53 @@ body {
     border-radius: 15px;
     padding: 4px;
 }
+
+.about {
+    border: solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(60deg, #517664, #2d3319);
+}
+
+.about-image {
+    height: 250px;
+    border-radius: 15px;
+    place-content: right;
+}
+
+#addCampForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 4;
+    column-gap: 15px;
+    row-gap: 5px;
+    grid-column: 1 / span 3;
+}
+
+.cloudinary-button {
+    border-radius: 12px;
+    background-color: #597059; 
+    color: white;
+    grid-row-start: 3;
+    justify-content: bottom;
+}
+
+.site-address {
+    align-self: stretch;
+}
+
+#addCampForm button {
+    border-radius: 12px;
+    background-color: #597059; 
+    color: white;
+}
+
+.submit-btn {
+    grid-column-start: 3;
+    grid-row-end: 3;
+    align-self: start;
+}
+
+#page .cloudinary-button {
+    grid-row-start: 2;
+}
