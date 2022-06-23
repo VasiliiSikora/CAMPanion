@@ -10,17 +10,12 @@ function renderCampForm() {
     const page = document.getElementById("page");
     page.innerHTML="";
     //create heading and page content
-    // const headingdiv = document.getElementById("title")
     const heading = document.createElement('h2');
     heading.textContent = "Add a New Campsite";
-    // headingdiv.innerHTML = "";
-    // headingdiv.replaceChildren(heading);
 
-    const addform = document.createElement("form");
+    const addform = document.createEaddlement("form");
     addform.setAttribute('id', 'addCampForm');
 
-    // const imagediv = document.getElementById("image");
-    // imagediv.innerHTML = "";
     const upload_widget = document.createElement("button");
     upload_widget.setAttribute('id', 'upload_widget');
     upload_widget.setAttribute('class', 'cloudinary-button');

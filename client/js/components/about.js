@@ -18,7 +18,7 @@ function renderAboutUs() {
         We are so happy to have you here, and hope that you find this site useful.</p>
         <p>We are always looking for ways to improve, and adding new content is one of those ways. So if you've stayed at one of the campsites listed, please leave a review.
         It helps other campers out. Or if you've stayed somewhere that isn't listed on the site yet, please add it in with the "Add a Campsite" feature.</p>
-        <p>Thanks for finding us, and Happy Camping!</p>
+        <p>Thanks for finding us and Happy Camping!</p>
         `
 
         let img1 = document.createElement("img");

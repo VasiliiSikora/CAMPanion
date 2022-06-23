@@ -32,7 +32,7 @@ function renderHeader() {
     const addSiteButton = document.createElement("button");
     addSiteButton.setAttribute('class', 'nav-button');
     addSiteButton.setAttribute('id', 'addSiteButton');
-    addSiteButton.textContent = "Add a Campsite";
+    addSiteButton.textContent = "Add Campsite";
     headerContainer.appendChild(addSiteButton);
 
     const signupButton = document.createElement("button");
