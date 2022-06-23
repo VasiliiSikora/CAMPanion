@@ -88,7 +88,7 @@ async function editCampsite(campId) {
                     <p><label for="state">State:</label>
                     <select name="state">
                         <option selected="true" disabled="disabled">SELECT</option>
-                        <option value="ACT ${stateObject['ACT']}>ACT</option>
+                        <option value="ACT" ${stateObject['ACT']}>ACT</option>
                         <option value="NSW" ${stateObject['NSW']}>NSW</option>
                         <option value="NT" ${stateObject['NT']}>NT</option>
                         <option value="QLD" ${stateObject['QLD']}">QLD</option>
