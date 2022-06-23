@@ -25,6 +25,15 @@ body {
     width: 300px;
 }
 
+#logo-c {
+    color: var(--text)
+}
+
+#logo-anion {
+    color: var(--buttons)
+}
+
+
 .nav-button {
     display: inline-block;
     all: unset;

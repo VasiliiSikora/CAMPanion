@@ -143,10 +143,11 @@ function renderHomePage() {
 
                 for (result of response.data) { //result is the campsite
                     // console.log('render homepage - campsiteid is: ' + result.campsiteid)
+                    const campid = result.campsiteid
                     const resultCont = document.createElement('div');
                         resultCont.setAttribute('class', 'resultCont')
                         resultCont.addEventListener('click', function() {
-                            renderSingleCampsite(result.campsiteid);
+                            renderSingleCampsite(campid);
                         })
                     const image = document.createElement('img');
                         image.src = result.img;
