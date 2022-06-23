@@ -138,7 +138,7 @@ function renderCampForm() {
     }
 
     axios.post('/api/addcampsite', data).then((response) => {
-        renderHomePage()
+        renderSingleCampsite(response.data.newid)
 
         }).catch((err) => {
             if (err.response.status == 400) {

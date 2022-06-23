@@ -41,7 +41,7 @@ router.post('/api/addcampsite', (req, res) => {
                     db.query(sqlAmenities, [campid, showers, toilets, bbq, water, electricity, kayak]).then((dbResult) => {
                     })
                 })
-                res.json({ success: true })
+                res.json({ success: true, newid:campid })
                 
             })  .catch((err) => {
                 console.log(err.res)
