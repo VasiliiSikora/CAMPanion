@@ -85,6 +85,12 @@ function renderSingleCampsite(campId) {
         campImg.classList.add('individual-result-pic')
         campImg.src = campsiteResult[0]['img']
         singleCampsiteImage.appendChild(campImg)
+
+        const mapImg = document.createElement('img')
+        mapImg.classList.add('individual-result-pic')
+        mapImg.src = campsiteResult[0]['mapimg']
+        mapImg.setAttribute('alt', 'Map of Location Unavailable')
+        singleCampsiteImage.appendChild(mapImg)
     })
     .catch((error) => {
         const errorMessage = document.createElement('p')

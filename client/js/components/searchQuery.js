@@ -58,6 +58,9 @@ function searchQuery(searchQuery, searchState, glampingBool, tentBool, parkBool,
             console.log('id is: ' + result)
             const resultCont = document.createElement('div');
                 resultCont.setAttribute('class', 'resultCont')
+                resultCont.addEventListener('click', function() {
+                    renderSingleCampsite(result.campsiteid);
+                })
             const image = document.createElement('img');
                 image.src = result.img;
                 image.setAttribute('class', 'resultImage')
