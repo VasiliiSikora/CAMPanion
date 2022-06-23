@@ -7,6 +7,16 @@ function renderHomePage() {
     docBody.classList.remove('render-single-campsite');
 
     // container for search
+    const welcomeHeader = document.createElement('h1')
+        welcomeHeader.setAttribute('id', 'welcome-header')
+        welcomeHeader.innerHTML = `Explore the community of <span id='welcome-name'>CAMPanions</span>`
+    const welcomeMessageDiv = document.createElement('div')
+        welcomeMessageDiv.setAttribute('id', 'welcome-div')
+    const welcomeMessage = document.createElement('p')
+        welcomeMessage.setAttribute('id', 'welcome-msg')
+        welcomeMessage.innerHTML = `Glamping by a lake, pitching a tent in the sand, or trying your luck in that cabin in the woods. Live the great outdoors whatever your mood.`
+        welcomeMessageDiv.append(welcomeMessage)
+
     const searchContainer = document.createElement('div')
         searchContainer.setAttribute('id', 'searchCont')
     const resultsContainer = document.createElement('div')
@@ -184,7 +194,7 @@ function renderHomePage() {
 
     form.append(searchBar, stateDropDown, searchButton, campType);
     searchContainer.append(form)
-    docBody.append(searchContainer, resultsContainer)
+    docBody.append(welcomeHeader, welcomeMessageDiv, searchContainer, resultsContainer)
 
     // Default Searches
     defaultSearches('beach camp', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'allstates', false, false, false, false, false, false, false, true)
