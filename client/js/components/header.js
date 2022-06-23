@@ -6,7 +6,12 @@ function renderHeader() {
     
     // const heading = document.createElement("h1");
     // heading.setAttribute('id', 'heading');
-    // heading.innerHTML = 'C' + '&#x26FA' + 'MPanion';
+    // heading.innerHTML = `
+    //     <span id='logo-c'>C&#x26FAMP</span>
+    //     <span id='logo-anion'>anion</span>
+    //     `
+    
+    // // 'C' + '&#x26FA' + 'MPanion';
     // heading.addEventListener('click', renderHomePage)
     // headerContainer.appendChild(heading);
 

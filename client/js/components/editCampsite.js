@@ -1,7 +1,7 @@
 // const { default: axios } = require("axios");
 
 async function editCampsite(campId) {
-    const URL = 'http://localhost:3001/api/session'
+    const URL = '/api/session'
     const results = await axios.get(URL).then(response => {
         if (response.data.name) {
 
@@ -206,9 +206,8 @@ async function editCampsite(campId) {
 }
 
 
-
 async function deleteCampsiteRequest(campId) {
-    const URL = 'http://localhost:3001/api/session'
+    const URL = '/api/session'
     const results = await axios.get(URL).then(response => {
         if (response.data.name) {
             const mainContainer = document.getElementById('page')
@@ -233,7 +232,6 @@ async function deleteCampsiteRequest(campId) {
 }
 
 function deleteCampsiteConfirm(campId) {
-    console.log('will delete!')
     axios
     .delete(`/api/deleteCampsite/${campId}`)
     .then((response) => {
