@@ -142,7 +142,7 @@ function renderHomePage() {
                     results.append(resultHeader)
 
                 for (result of response.data) { //result is the campsite
-                    console.log('render homepage - campsiteid is: ' + result.campsiteid)
+                    // console.log('render homepage - campsiteid is: ' + result.campsiteid)
                     const resultCont = document.createElement('div');
                         resultCont.setAttribute('class', 'resultCont')
                         resultCont.addEventListener('click', function() {
@@ -157,7 +157,7 @@ function renderHomePage() {
                         location.innerText = result.street + " " + result.state
                     const types = document.createElement('p');
                         for (type in result) {
-                            console.log(type)
+                            // console.log(type)
                             if (result[type] == true && type != 'campsiteid') {
                                 types.innerText += type + " ";
                             }
@@ -186,8 +186,8 @@ function renderHomePage() {
     docBody.append(searchContainer, resultsContainer)
 
     // Default Searches
-    defaultSearches('Beachside Camping', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'VIC', false, false, false, false, false, false, false, true)
-    defaultSearches('Farm Camping', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'NSW', false, false, false, false, false, true, false, false)
+    defaultSearches('camp', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'allstates', false, false, false, false, false, false, false, true)
+    defaultSearches('camp', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'allstates', false, false, false, false, false, true, false, false)
 }
 // Predetermined searchs (image with text below) clicking this will do a get-request search of 
 // that topic in the user's postcode?

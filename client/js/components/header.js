@@ -6,15 +6,17 @@ function renderHeader() {
     
     const heading = document.createElement("h1");
     heading.setAttribute('id', 'heading');
-    heading.textContent = "CAMPanion";
+    heading.innerHTML = 'C' + '&#x26FA' + 'MPanion';
+    heading.addEventListener('click', renderHomePage)
     headerContainer.appendChild(heading);
 
-    const homeButton = document.createElement("button");
-    homeButton.setAttribute('class', 'nav-button');
-    homeButton.setAttribute('id', 'homeButton');
-    homeButton.textContent = "Home Page";
-    homeButton.addEventListener('click', renderHomePage)
-    headerContainer.appendChild(homeButton);
+    // made campanion title a link to home page instead
+    // const homeButton = document.createElement("button");
+    // homeButton.setAttribute('class', 'nav-button');
+    // homeButton.setAttribute('id', 'homeButton');
+    // homeButton.textContent = "Home Page";
+    // homeButton.addEventListener('click', renderHomePage)
+    // headerContainer.appendChild(homeButton);
 
     const aboutButton = document.createElement("button");
     aboutButton.setAttribute('class', 'nav-button');
@@ -22,12 +24,13 @@ function renderHeader() {
     aboutButton.textContent = "About";
     headerContainer.appendChild(aboutButton);
 
-    const reviewButton = document.createElement("button");
-    reviewButton.setAttribute('class', 'nav-button');
-    reviewButton.setAttribute('id', 'reviewButton');
-    reviewButton.textContent = "Add a Review";
-    reviewButton.addEventListener('click', renderAllCampsitesAZ)
-    headerContainer.appendChild(reviewButton);
+    // removed since 
+    // const reviewButton = document.createElement("button");
+    // reviewButton.setAttribute('class', 'nav-button');
+    // reviewButton.setAttribute('id', 'reviewButton');
+    // reviewButton.textContent = "Add a Review";
+    // reviewButton.addEventListener('click', renderAllCampsitesAZ)
+    // headerContainer.appendChild(reviewButton);
 
     const addSiteButton = document.createElement("button");
     addSiteButton.setAttribute('class', 'nav-button');

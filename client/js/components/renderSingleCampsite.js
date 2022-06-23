@@ -85,6 +85,12 @@ function renderSingleCampsite(campId) {
         campImg.classList.add('individual-result-pic')
         campImg.src = campsiteResult[0]['img']
         singleCampsiteImage.appendChild(campImg)
+
+        const mapImg = document.createElement('img')
+        mapImg.classList.add('individual-result-pic')
+        mapImg.src = campsiteResult[0]['mapimg']
+        mapImg.setAttribute('alt', 'Map of Location Unavailable')
+        singleCampsiteImage.appendChild(mapImg)
     })
     .catch((error) => {
         const errorMessage = document.createElement('p')
@@ -154,12 +160,12 @@ function renderSingleCampsite(campId) {
             let reviewUl = document.createElement('ul')
             reviewUl.setAttribute('class', 'review-ul')
             let reviewRating = document.createElement('li')
-            // let starRating = reviewsResults[i]['rating']
+            let starRatingText = ''
             // let content = (starRating * ⭐)
-            // for(let j = 0; j < reviewsResults[i]['rating']; j++) {
-            //     let starRatingText = starRatingText.concat('⭐')
-            // }
-            reviewRating.innerHTML = 'trying to get cute stars to appear'
+            for(let j = 0; j < reviewsResults[i]['rating']; j++) {
+                starRatingText += '&#x2B50';
+            }
+            reviewRating.innerHTML = starRatingText
             let reviewDesc = document.createElement('li')
             reviewDesc.innerHTML = reviewsResults[i]['description']
             let reviewDate = document.createElement('li')
