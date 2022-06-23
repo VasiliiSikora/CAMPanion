@@ -11,7 +11,7 @@ router.post('/api/addcampsite', (req, res) => {
 
     //check whether the mandatory values for the campsite table are provided
     if  (!title) {
-        res.status(400).json({ message: 'You did not submit a title!'})
+        res.status(400).json({ message: 'You did not submit a title'})
 
      } else if (!address) {
         res.status(400).json({ message: 'You need to provide a street address'})
