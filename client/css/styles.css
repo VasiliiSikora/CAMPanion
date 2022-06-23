@@ -26,14 +26,36 @@ body {
     width: 300px;
 }
 
-#logo-c {
+/* #logo-c {
     color: var(--text)
 }
 
 #logo-anion {
     color: var(--buttons)
+} */
+
+#welcome-header {
+    color: var(--text);
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
+#welcome-msg {
+    color: var(--text);
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#welcome-name {
+    color: var(--other);
+}
+
+#welcome-div {
+    margin: 0 150px;
+    padding-bottom: 25px;
+}
 
 .nav-button {
     display: inline-block;
@@ -141,13 +163,23 @@ body {
 }
   
 .resultImage {
-    height: 150px;
+    width: 200px;
 }
 
 .resultCont {
     display: grid;
     grid-template-columns: 1.2fr 2fr 1fr 1fr;
     align-items: center;
+    margin: 10px 40px;
+    justify-content: space-around;
+}
+
+.resultCont > h3 {
+    padding: 10px;
+}
+
+.resultCont > p {
+    padding: 10px;
 }
 
 #resultCont h2 {
