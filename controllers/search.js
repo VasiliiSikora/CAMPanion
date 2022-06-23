@@ -33,23 +33,49 @@ router.post('/', (req, res) => {
 
     console.log([...queryArray], state)
 
-    let sql = `
-    SELECT * FROM campsites 
-    INNER JOIN types ON campsites.campsiteId = types.campsiteId
-    WHERE title ILIKE ANY($1) AND state = ($2)
-    `
-    // Adds all checked boxes to search query
-    for (type of typeChecker) {
-        sql += `AND ${type} = true`
+
+    if (state == 'allstates') {
+        sql = `
+        SELECT * FROM campsites 
+        INNER JOIN types ON campsites.campsiteId = types.campsiteId
+        WHERE title ILIKE ANY($1)
+        `
+
+
+        // Adds all checked boxes to search query
+        for (type of typeChecker) {
+            sql += `AND ${type} = true`
+        }
+
+        console.log(sql)
+
+        db.query(sql, [queryArray])
+            .then((dbResult) => {
+            console.log(dbResult.rows)
+            res.json(dbResult.rows)
+        })
+    } else {
+        let sql = `
+        SELECT * FROM campsites 
+        INNER JOIN types ON campsites.campsiteId = types.campsiteId
+        WHERE title ILIKE ANY($1) AND state = ($2)
+        `
+
+            // Adds all checked boxes to search query
+        for (type of typeChecker) {
+            sql += `AND ${type} = true`
+        }
+
+        console.log(sql)
+
+        db.query(sql, [queryArray, state])
+            .then((dbResult) => {
+            console.log(dbResult.rows)
+            res.json(dbResult.rows)
+        })
     }
 
-    console.log(sql)
 
-    db.query(sql, [queryArray, state])
-        .then((dbResult) => {
-        console.log(dbResult.rows)
-        res.json(dbResult.rows)
-    })
 })
 
 module.exports = router

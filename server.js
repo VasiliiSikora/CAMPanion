@@ -14,7 +14,7 @@ const addCampsiteController = require('./controllers/addcampsite')
 const editCampsiteController = require('./controllers/editCampsiteController.js'); // Kim
 
 const app = express()
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // Session for Cookies
 app.use(expressSession({
