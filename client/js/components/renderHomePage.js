@@ -7,6 +7,16 @@ function renderHomePage() {
     docBody.classList.remove('render-single-campsite');
 
     // container for search
+    const welcomeHeader = document.createElement('h1')
+        welcomeHeader.setAttribute('id', 'welcome-header')
+        welcomeHeader.innerHTML = `Explore the community of <span id='welcome-name'>CAMPanions</span>`
+    const welcomeMessageDiv = document.createElement('div')
+        welcomeMessageDiv.setAttribute('id', 'welcome-div')
+    const welcomeMessage = document.createElement('p')
+        welcomeMessage.setAttribute('id', 'welcome-msg')
+        welcomeMessage.innerHTML = `Glamping by a lake, pitching a tent in the sand, or trying your luck in that cabin in the woods. Live the great outdoors whatever your mood.`
+        welcomeMessageDiv.append(welcomeMessage)
+
     const searchContainer = document.createElement('div')
         searchContainer.setAttribute('id', 'searchCont')
     const resultsContainer = document.createElement('div')
@@ -72,6 +82,7 @@ function renderHomePage() {
     const searchButton = document.createElement('button')
     searchButton.innerHTML = 'Search'
     searchButton.setAttribute('type', 'submit')
+    searchButton.setAttribute('id', 'homepage-search')
 
     form.addEventListener('submit', event => {
         event.preventDefault() //stop it adding get parameters to url
@@ -182,16 +193,22 @@ function renderHomePage() {
             })
     })
 
+    const defaultsDiv = document.createElement('div')
+        defaultsDiv.setAttribute('id', 'defaults-div')
+
     form.append(searchBar, stateDropDown, searchButton, campType);
     searchContainer.append(form)
-    docBody.append(searchContainer, resultsContainer)
+
+    docBody.append(welcomeHeader, welcomeMessageDiv, searchContainer, resultsContainer, defaultsDiv)
+
 
     // Default Searches
-    defaultSearches('beach camp', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'allstates', false, false, false, false, false, false, false, true)
-    defaultSearches('farm camp', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'allstates', false, false, false, false, false, true, false, false)
-    defaultSearches('lake camp', 'https://d2umhuunwbec1r.cloudfront.net/gallery/0004/0025/5E29973C10EC438FACE45AB950337832/medium.jpg', false, false, false, false, false, false, true, false)
-    defaultSearches('glamping', 'https://media.ladylike.gr/ldl-images/glamping.jpg', true, false, false, false, false, false, false, false)
-
+    defaultSearches('Beach Camp', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'allstates', false, false, false, false, false, false, false, true)
+    defaultSearches('Farm Uh... Wants a Camp', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'allstates', false, false, false, false, false, true, false, false)
+    defaultSearches('Lake Life Camping', 'https://d2umhuunwbec1r.cloudfront.net/gallery/0004/0025/5E29973C10EC438FACE45AB950337832/medium.jpg', false, false, false, false, false, false, true, false)
+    defaultSearches('Glamping', 'https://media.ladylike.gr/ldl-images/glamping.jpg', true, false, false, false, false, false, false, false)
+    defaultSearches('Cabin in the Woods', 'https://www.novaparks.com/sites/default/files/styles/scale_1440/public/things-to-do/Bull%20Run%20Cabin.jpg?itok=hMmwzO-l','allstates',false,false,false,false,true,false,false,false)
+    defaultSearches('8 Mile Caravan Camps', 'https://www.conceptcarz.com/images/articleimages/volkswagen-commercial-motorhome_02-800.jpg', 'allstates', false,false,false,true,false,false,false,false)
 }
 // Predetermined searchs (image with text below) clicking this will do a get-request search of 
 // that topic in the user's postcode?
