@@ -11,7 +11,7 @@ router.post('/api/addcampsite', (req, res) => {
 
     //check whether the mandatory values for the campsite table are provided
     if  (!title) {
-        res.status(400).json({ message: 'You did not submit a title!'})
+        res.status(400).json({ message: 'You did not submit a title'})
 
      } else if (!address) {
         res.status(400).json({ message: 'You need to provide a street address'})
@@ -41,7 +41,7 @@ router.post('/api/addcampsite', (req, res) => {
                     db.query(sqlAmenities, [campid, showers, toilets, bbq, water, electricity, kayak]).then((dbResult) => {
                     })
                 })
-                res.json({ success: true })
+                res.json({ success: true, newid:campid })
                 
             })  .catch((err) => {
                 console.log(err.res)

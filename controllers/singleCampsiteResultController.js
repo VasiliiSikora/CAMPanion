@@ -6,7 +6,7 @@ const db = require('../database/db.js')
 router.get('/api/campsite/:id', (req, res) => {
     let selectedCampsiteId = req.params.id;
     const sql = `
-    SELECT title, street, state, img FROM campsites WHERE campsiteId = ${selectedCampsiteId}
+    SELECT title, street, state, img, mapimg FROM campsites WHERE campsiteId = ${selectedCampsiteId}
     `
     db.query(sql)
         .then((dbResult) => {
