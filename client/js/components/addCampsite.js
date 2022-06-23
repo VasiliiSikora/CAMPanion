@@ -13,7 +13,7 @@ function renderCampForm() {
     const heading = document.createElement('h2');
     heading.textContent = "Add a New Campsite";
 
-    const addform = document.createEaddlement("form");
+    const addform = document.createElement("form");
     addform.setAttribute('id', 'addCampForm');
 
     const upload_widget = document.createElement("button");
