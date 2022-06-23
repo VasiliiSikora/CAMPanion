@@ -1,5 +1,5 @@
 function defaultSearches(textDescript, imgURL, state, glampingBool, tentBool, parkBool, caravanBool, cabinBool, farmBool, lakeBool, beachBool) {
-    const docBody = document.getElementById('page')
+    const defaulstDiv = document.getElementById('defaults-div')
 
     const container = document.createElement('div')
         container.className = 'container'
@@ -16,7 +16,7 @@ function defaultSearches(textDescript, imgURL, state, glampingBool, tentBool, pa
     })
 
     container.append(image,text)
-    docBody.append(container)
+    defaulstDiv.append(container)
 }
 
 // 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg'
