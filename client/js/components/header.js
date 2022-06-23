@@ -4,11 +4,18 @@ function renderHeader() {
     const headerContainer = document.getElementById("header");
     headerContainer.innerHTML = ""
     
-    const heading = document.createElement("h1");
-    heading.setAttribute('id', 'heading');
-    heading.innerHTML = 'C' + '&#x26FA' + 'MPanion';
-    heading.addEventListener('click', renderHomePage)
-    headerContainer.appendChild(heading);
+    // const heading = document.createElement("h1");
+    // heading.setAttribute('id', 'heading');
+    // heading.innerHTML = 'C' + '&#x26FA' + 'MPanion';
+    // heading.addEventListener('click', renderHomePage)
+    // headerContainer.appendChild(heading);
+
+    const headingLogo = document.createElement('img');
+    headingLogo.setAttribute('id', 'heading');
+    headingLogo.src = "../images/logo.png"
+    headingLogo.addEventListener('click', renderHomePage)
+    headerContainer.appendChild(headingLogo);
+
 
     // made campanion title a link to home page instead
     // const homeButton = document.createElement("button");

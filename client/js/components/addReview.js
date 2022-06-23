@@ -50,7 +50,7 @@ function addReview(campId) {
         <p><label for="date">when did you visit?</label>
         <input type="date" name="date"</p>
         <p><label for="rating">rating out of 5</label>
-        <input type="number" name="rating"</p>
+        <input type="number" name="rating" min="1" max="5"</p>
         <p><label for="description">your review...</label>
         <p><input type="text" id="description" name="description" value="description">
         <button>Submit</button>
