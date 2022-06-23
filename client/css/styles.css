@@ -21,6 +21,10 @@ body {
     width: 100%;
 }
 
+#heading {
+    width: 300px;
+}
+
 .nav-button {
     display: inline-block;
     all: unset;
@@ -150,14 +154,14 @@ body {
     background-color: rgba(0,0,0,0.4);
 }
 
-.container {
+/* .container {
     position: relative;
     text-align: center;
     color: white;
     width: 300px;
     border-radius: 10px;
     height: 199px;
-}
+} */
 
 /* Modal */
 .modalContent {
@@ -183,11 +187,16 @@ body {
 }
 
 .container {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 300px;
+    border-radius: 10px;
+    height: 199px;
     transition: 0.2s;
     top: 0px;
-    position: relative;
     display: inline-block;
-    margin: 10px;
+    margin: 15px;
     box-shadow: none;
 }
 
