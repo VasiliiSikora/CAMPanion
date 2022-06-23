@@ -5,5 +5,3 @@
 // Call functions that are created in components files
 renderHeader();
 renderHomePage();
-
-// locationGet('Gatehouse Drive Kensington VIC')
