@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
 
         // Adds all checked boxes to search query
         for (type of typeChecker) {
-            sql += `AND ${type} = true`
+            sql += `AND ${type} = true `
         }
 
         console.log(sql)
@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
 
             // Adds all checked boxes to search query
         for (type of typeChecker) {
-            sql += `AND ${type} = true`
+            sql += `AND ${type} = true `
         }
 
         console.log(sql)

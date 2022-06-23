@@ -138,7 +138,7 @@ function renderCampForm() {
     }
 
     axios.post('/api/addcampsite', data).then((response) => {
-        renderHomePage()
+        renderSingleCampsite(response.data.newid)
 
         }).catch((err) => {
             if (err.response.status == 400) {
@@ -149,7 +149,7 @@ function renderCampForm() {
                 
         } else { 
             let errorMes = document.createElement('h3');
-            errorMes.textContent = "unknown error occured";
+            errorMes.textContent = "an unknown error occured";
             page.appendChild(errorMes)
             console.log(errorMes)
         }console.log(data)  

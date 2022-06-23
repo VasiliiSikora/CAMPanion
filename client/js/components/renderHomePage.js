@@ -186,8 +186,11 @@ function renderHomePage() {
     docBody.append(searchContainer, resultsContainer)
 
     // Default Searches
-    defaultSearches('camp', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'allstates', false, false, false, false, false, false, false, true)
-    defaultSearches('camp', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'allstates', false, false, false, false, false, true, false, false)
+    defaultSearches('beach camp', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'allstates', false, false, false, false, false, false, false, true)
+    defaultSearches('farm camp', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'allstates', false, false, false, false, false, true, false, false)
+    defaultSearches('lake camp', 'https://d2umhuunwbec1r.cloudfront.net/gallery/0004/0025/5E29973C10EC438FACE45AB950337832/medium.jpg', false, false, false, false, false, false, true, false)
+    defaultSearches('glamping', 'https://media.ladylike.gr/ldl-images/glamping.jpg', true, false, false, false, false, false, false, false)
+
 }
 // Predetermined searchs (image with text below) clicking this will do a get-request search of 
 // that topic in the user's postcode?
