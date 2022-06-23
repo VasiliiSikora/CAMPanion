@@ -16,7 +16,7 @@ function renderLogin() {
     // login Form
         const form = document.createElement('form')
         const logo = document.createElement('img')
-        logo.src = '../../static/logo.jpeg' // link to logo image in statics
+        logo.src = '../../images/logo.png'  // link to logo image in statics
         form.innerHTML = `
         <input type="text" name="email" placeholder="Email Address"><br>
         <input type="password" name="password" placeholder="Password"><br>

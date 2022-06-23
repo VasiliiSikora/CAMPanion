@@ -15,7 +15,6 @@ async function locationGet(location) {
                 lat: response['data']['resourceSets'][0]['resources'][0]['point']['coordinates'][0],
                 lon: response['data']['resourceSets'][0]['resources'][0]['point']['coordinates'][1]
             }
-
     }).catch(err => console.log(err))
 }
 
