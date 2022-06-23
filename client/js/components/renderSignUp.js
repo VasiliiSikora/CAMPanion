@@ -20,9 +20,9 @@ function renderSignUp() {
         form.innerHTML = `
         <input type="text" name="name" placeholder="Name"><br>
         <input type="text" name="email" placeholder="Email Address"><br>
-        <input type="text" name="password" placeholder="Password"><br>
+        <input type="password" name="password" placeholder="Password"><br>
         <input type="text" name="postcode" placeholder="Postcode"><br>
-        <button>Join Campanion</button>
+        <button>Join CAMPanion</button>
         `
         form.addEventListener('submit', event => {
             event.preventDefault() //stop it adding get parameters to url
