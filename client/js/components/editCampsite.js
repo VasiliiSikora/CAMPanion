@@ -82,9 +82,9 @@ async function editCampsite(campId) {
                 addform.innerHTML = `
                     <div class="site-address">
                     <p><label for="title">Campsite Title:</label>
-                    <input type="text" name="title" value="${currentTitle}"</p>
+                    <input type="text" name="title" placeholder="${currentTitle}"</p>
                     <p><label for="address">Address:</label>
-                    <input type="text" name="address" value="${currentStreet}"</p>
+                    <input type="text" name="address" placeholder="${currentStreet}"</p>
                     <p><label for="state">State:</label>
                     <select name="state">
                         <option selected="true" disabled="disabled">SELECT</option>
@@ -235,7 +235,7 @@ function deleteCampsiteConfirm(campId) {
     axios
     .delete(`/api/deleteCampsite/${campId}`)
     .then((response) => {
-        renderAllCampsitesAZ()
+        renderHomePage()
     })
     .catch((err) => {
         if (err.response.status == 400) {
