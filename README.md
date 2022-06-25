@@ -45,6 +45,91 @@ https://cloudinary.com/documentation/upload_widget
 * More user profile integration
 
 # Code Snippets
+## Add Campsite - Dealing with Form Data
+```javascript
+    for (item in data) {
+        if (item == 'title' || item == 'address' || item == 'state' || item == 'image') {
+            continue
+        }
+        if (data[item] == null) {
+            data[item] = false
+        } else {
+            data[item] = true
+        }
+    }
+```
+
+## Tables in SQL
+```SQL
+CREATE TABLE users (
+    userid SERIAL PRIMARY KEY,
+    name TEXT,
+    email TEXT,
+    password_hash TEXT,
+    postcode INTEGER,
+    admin BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE campsites (
+    campsiteid SERIAL PRIMARY KEY,
+    title VARCHAR(50),
+    street VARCHAR(100),
+    state VARCHAR(3),
+    img TEXT,
+    mapimg TEXT
+);
+
+CREATE TABLE types (
+    campsiteid INTEGER REFERENCES campsites(campsiteid) UNIQUE,
+    glamping BOOLEAN DEFAULT FALSE,
+    tent BOOLEAN DEFAULT FALSE,
+    park BOOLEAN DEFAULT FALSE,
+    caravan BOOLEAN DEFAULT FALSE,
+    cabin BOOLEAN DEFAULT FALSE,
+    farm BOOLEAN DEFAULT FALSE,
+    lake BOOLEAN DEFAULT FALSE,
+    beach BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE amenities (
+    campsiteid INTEGER REFERENCES campsites(campsiteid) UNIQUE,
+    showers BOOLEAN DEFAULT FALSE,
+    toilets BOOLEAN DEFAULT FALSE,
+    bbq BOOLEAN DEFAULT FALSE,
+    water BOOLEAN DEFAULT FALSE,
+    electricity BOOLEAN DEFAULT FALSE,
+    kayak BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE reviews (
+    reviewid SERIAL PRIMARY KEY,
+    userid INTEGER REFERENCES users(userid),
+    campsiteid INTEGER REFERENCES campsites(campsiteid),
+    description TEXT,
+    rating INTEGER,
+    date DATE
+);
+```
+
+## Cloudinary
+```javascript
+    let myWidget = cloudinary.createUploadWidget({
+        cloudName: 'campanion', 
+        uploadPreset: 'campanion',
+        sources: ['local', 'url']
+        }, (error, result) => { 
+            if (!error && result && result.event === "success") { 
+            console.log('Done! Here is the image info: ', result.info); 
+            img_url = result.info.secure_url;
+            }
+        }
+        ) 
+
+    document.getElementById("upload_widget").addEventListener("click", function(){
+            myWidget.open();
+        }, false);
+```
+
 ## Prefilled Form for Edit
 ```javascript
     axios
@@ -133,68 +218,3 @@ https://cloudinary.com/documentation/upload_widget
     })
 ```
 
-## Add Campsite - Dealing with Form Data
-```javascript
-    for (item in data) {
-        if (item == 'title' || item == 'address' || item == 'state' || item == 'image') {
-            continue
-        }
-        if (data[item] == null) {
-            data[item] = false
-        } else {
-            data[item] = true
-        }
-    }
-```
-
-## Tables in SQL
-```SQL
-CREATE TABLE users (
-    userid SERIAL PRIMARY KEY,
-    name TEXT,
-    email TEXT,
-    password_hash TEXT,
-    postcode INTEGER,
-    admin BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE campsites (
-    campsiteid SERIAL PRIMARY KEY,
-    title VARCHAR(50),
-    street VARCHAR(100),
-    state VARCHAR(3),
-    img TEXT,
-    mapimg TEXT
-);
-
-CREATE TABLE types (
-    campsiteid INTEGER REFERENCES campsites(campsiteid) UNIQUE,
-    glamping BOOLEAN DEFAULT FALSE,
-    tent BOOLEAN DEFAULT FALSE,
-    park BOOLEAN DEFAULT FALSE,
-    caravan BOOLEAN DEFAULT FALSE,
-    cabin BOOLEAN DEFAULT FALSE,
-    farm BOOLEAN DEFAULT FALSE,
-    lake BOOLEAN DEFAULT FALSE,
-    beach BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE amenities (
-    campsiteid INTEGER REFERENCES campsites(campsiteid) UNIQUE,
-    showers BOOLEAN DEFAULT FALSE,
-    toilets BOOLEAN DEFAULT FALSE,
-    bbq BOOLEAN DEFAULT FALSE,
-    water BOOLEAN DEFAULT FALSE,
-    electricity BOOLEAN DEFAULT FALSE,
-    kayak BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE reviews (
-    reviewid SERIAL PRIMARY KEY,
-    userid INTEGER REFERENCES users(userid),
-    campsiteid INTEGER REFERENCES campsites(campsiteid),
-    description TEXT,
-    rating INTEGER,
-    date DATE
-);
-```
