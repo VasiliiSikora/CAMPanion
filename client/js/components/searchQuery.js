@@ -28,7 +28,6 @@ function searchQuery(searchQuery, searchState, glampingBool, tentBool, parkBool,
 
     axios.post('/api/campsite', data) // get data from campsites database
     .then(response => {
-        console.log(response.data) // currently pulls all results
         renderHeader()
 
         // empty previous search results
@@ -55,7 +54,6 @@ function searchQuery(searchQuery, searchState, glampingBool, tentBool, parkBool,
             results.append(resultHeader)
 
         for (result of response.data) { //result is the campsite
-            console.log('id is: ' + result)
             const campid = result.campsiteid
             const resultCont = document.createElement('div');
                 resultCont.setAttribute('class', 'resultCont')
@@ -71,7 +69,6 @@ function searchQuery(searchQuery, searchState, glampingBool, tentBool, parkBool,
                 location.innerText = result.street + " " + result.state
             const types = document.createElement('p');
                 for (type in result) {
-                    console.log(type)
                     if (result[type] == true && type != 'campsiteid') {
                         types.innerText += type + " ";
                     }
