@@ -38,9 +38,11 @@ function renderAllCampsitesAZ() {
 function addReview(campId) {
     clearChildren()
     const mainContainer = document.getElementById('page')
+    mainContainer.classList.remove('render-single-campsite');
+
     // need to get ID from button, then CampTitle
     const heading = document.createElement('h2')
-    heading.innerHTML = ("leave a review for ")
+    heading.innerHTML = ("leave a review")
     const form = document.createElement('form')
     mainContainer.appendChild(heading)
     mainContainer.appendChild(form)
@@ -49,12 +51,14 @@ function addReview(campId) {
     form.innerHTML = `
         <p><label for="date">when did you visit?</label>
         <input type="date" name="date"</p>
-        <p><label for="rating">rating out of 5</label>
+        <p><label for="rating">&#x2B50 rating (1-5)</label>
         <input type="number" name="rating" min="1" max="5"</p>
-        <p><label for="description">your review...</label>
-        <p><input type="text" id="description" name="description" value="description">
+        <p><label for="description">your review</label>
+        <p><input type="textarea" id="description" name="description" placeholder="description">
         <button>Submit</button>
     `
+    const textBox = document.getElementById('description')
+    textBox.style.width="500px";
     form.addEventListener('submit', (event) => {
         event.preventDefault()
         let formData = new FormData(form)
