@@ -206,8 +206,8 @@ function renderHomePage() {
     // Default Searches
     defaultSearches('Beach Camp', 'https://holidayswithkids.com.au/wp-content/uploads/2021/01/shutterstock_436762138-1.jpg', 'allstates', false, false, false, false, false, false, false, true)
     defaultSearches('Farm Uh... Wants a Camp', 'https://vermontexplored.com/wp-content/uploads/2021/03/tentrr-camping-vermont.jpg.webp', 'allstates', false, false, false, false, false, true, false, false)
-    defaultSearches('Lake Life Camping', 'https://d2umhuunwbec1r.cloudfront.net/gallery/0004/0025/5E29973C10EC438FACE45AB950337832/medium.jpg', false, false, false, false, false, false, true, false)
-    defaultSearches('Glamping', 'https://media.ladylike.gr/ldl-images/glamping.jpg', true, false, false, false, false, false, false, false)
+    defaultSearches('Lake Life Camping', 'https://d2umhuunwbec1r.cloudfront.net/gallery/0004/0025/5E29973C10EC438FACE45AB950337832/medium.jpg','allstates', false, false, false, false, false, false, true, false)
+    defaultSearches('Glamping', 'https://media.ladylike.gr/ldl-images/glamping.jpg', 'allstates', true, false, false, false, false, false, false, false)
     defaultSearches('Cabin in the Woods', 'https://www.novaparks.com/sites/default/files/styles/scale_1440/public/things-to-do/Bull%20Run%20Cabin.jpg?itok=hMmwzO-l','allstates',false,false,false,false,true,false,false,false)
     defaultSearches('8 Mile Caravan Camps', 'https://www.conceptcarz.com/images/articleimages/volkswagen-commercial-motorhome_02-800.jpg', 'allstates', false,false,false,true,false,false,false,false)
 }
