@@ -113,6 +113,8 @@ CREATE TABLE reviews (
 
 ## Cloudinary
 ```javascript
+    let img_url = "";
+
     let myWidget = cloudinary.createUploadWidget({
         cloudName: 'campanion', 
         uploadPreset: 'campanion',
