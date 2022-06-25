@@ -68,6 +68,10 @@ body {
     /* height: 50px; */
 }
 
+#addSiteButton {
+    text-align: center;
+}
+
 .nav-button:hover {
     background-color: #597059; 
     color: white;
@@ -282,18 +286,33 @@ body {
     padding: 4px;
 }
 
+/* About Page */
+.about-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20% auto;
+}
+
+.abt-heading {
+    grid-row-start: 1;
+}
+
 .about {
-    border: solid;
-    border-image-slice: 1;
-    border-width: 3px;
-    border-image-source: linear-gradient(60deg, #517664, #2d3319);
+    grid-row-start: 2;
+    padding-right: 100px;
+    text-align: justify;
 }
 
 .about-image {
+    grid-row-start: 2;
     height: 250px;
+    width: 450px;
     border-radius: 15px;
     place-content: right;
+    align-self: center;
 }
+
+/* Add Campsite Page */
 
 #addCampForm {
     display: grid;

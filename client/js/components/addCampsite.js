@@ -9,17 +9,21 @@ function renderCampForm() {
     //to append to body
     const page = document.getElementById("page");
     page.innerHTML="";
+    page.classList.remove('render-single-campsite');
+    page.classList.remove('about-page');
+
     //create heading and page content
     const heading = document.createElement('h2');
-    heading.textContent = "Add a New Campsite";
+        heading.textContent = "Add a New Campsite";
 
     const addform = document.createElement("form");
-    addform.setAttribute('id', 'addCampForm');
+        addform.setAttribute('id', 'addCampForm');
 
     const upload_widget = document.createElement("button");
-    upload_widget.setAttribute('id', 'upload_widget');
-    upload_widget.setAttribute('class', 'cloudinary-button');
-    upload_widget.textContent = "Upload Campsite Photo";
+        upload_widget.setAttribute('id', 'upload_widget');
+        upload_widget.setAttribute('class', 'cloudinary-button');
+        upload_widget.textContent = "Upload Campsite Photo";
+
     page.replaceChildren(heading, upload_widget);
     let img_url = "";
 

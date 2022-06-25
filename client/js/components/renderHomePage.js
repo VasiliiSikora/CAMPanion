@@ -5,6 +5,7 @@ function renderHomePage() {
     const docBody = document.getElementById('page');
     docBody.innerHTML = ""
     docBody.classList.remove('render-single-campsite');
+    docBody.classList.remove('about-page');
 
     // container for search
     const welcomeHeader = document.createElement('h1')
