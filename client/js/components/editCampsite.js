@@ -24,26 +24,16 @@ async function editCampsite(campId) {
             axios
             .get(`/api/types/${campId}`)
             .then((response) => {
-                console.log("types results")
                 let typesResponse = (response['data'][0])
-                // loop through object to find true/false - where true update checked box
-                // set an empty object and keep assigning pairs - to be used in the form
                 let typesObject = {}
                 for (item in typesResponse) {
-                    console.log(typesResponse[item])
                     if (typesResponse[item] == true) {
-                        // need the variable to be called 'item + Checked' eg glampingChecked
-                        // need value to be 'checked'
                         typesObject[item] = 'checked'
-                        console.log(typesObject[item])
-                        // add else option
                     } else {
                         typesObject[item] = 'unchecked'
-                        console.log(typesObject[item])
                     }
                 }
-                console.log(typesObject)
-                console.log(typesObject['park'])
+
 
 
                 axios
@@ -82,9 +72,9 @@ async function editCampsite(campId) {
                 addform.innerHTML = `
                     <div class="site-address">
                     <p><label for="title">Campsite Title:</label>
-                    <input type="text" name="title" placeholder="${currentTitle}"</p>
+                    <input type="text" name="title" value="${currentTitle}"</p>
                     <p><label for="address">Address:</label>
-                    <input type="text" name="address" placeholder="${currentStreet}"</p>
+                    <input type="text" name="address" value="${currentStreet}"</p>
                     <p><label for="state">State:</label>
                     <select name="state">
                         <option selected="true" disabled="disabled">SELECT</option>
