@@ -132,6 +132,15 @@ CREATE TABLE reviews (
         }, false);
 ```
 
+## Review Stars
+```javascript
+    let starRatingText = ''
+    // let content = (starRating * ⭐)
+    for(let j = 0; j < reviewsResults[i]['rating']; j++) {
+        starRatingText += '&#x2B50';
+    }
+```
+
 ## Prefilled Form for Edit
 ```javascript
     axios
